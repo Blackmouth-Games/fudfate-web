@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,14 +8,14 @@
 
 @layer base {
   :root {
-    --background: 220 33% 9%;
-    --foreground: 210 20% 98%;
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
 
-    --card: 224 71% 4%;
-    --card-foreground: 210 20% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 224 71% 4%;
-    --popover-foreground: 210 20% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
     --primary: 266 57% 64%;
     --primary-foreground: 0 0% 100%;
@@ -22,8 +23,8 @@
     --secondary: 192 79% 65%;
     --secondary-foreground: 222 47.4% 11.2%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 16% 47%;
 
     --accent: 48 96% 53%;
     --accent-foreground: 222 47.4% 11.2%;
@@ -31,8 +32,8 @@
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 20% 98%;
 
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
     --ring: 263 69.8% 42%;
 
     --radius: 0.5rem;
@@ -43,10 +44,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-pixel;
-    background-image: 
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-      url('/lovable-uploads/c8cd2ef5-5438-4fb7-afe3-17f3c2f1c4a3.png');
+    @apply bg-white text-foreground font-pixel;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -61,7 +59,7 @@
   }
 
   .gold-frame {
-    @apply border-4 border-accent/80 bg-black/40 shadow-[0_0_15px_rgba(234,179,8,0.5)];
+    @apply border-4 border-accent/80 bg-white shadow-[0_0_15px_rgba(234,179,8,0.5)];
   }
 
   .card-container {
@@ -240,5 +238,18 @@
   }
   100% {
     transform: translateY(0px);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 -4px 0 0 #000, 0 4px 0 0 #000, -4px 0 0 0 #000, 4px 0 0 0 #000, 0 0 0 rgba(234, 179, 8, 0);
+  }
+  50% {
+    box-shadow: 0 -4px 0 0 #000, 0 4px 0 0 #000, -4px 0 0 0 #000, 4px 0 0 0 #000, 0 0 15px rgba(234, 179, 8, 0.7);
   }
 }
