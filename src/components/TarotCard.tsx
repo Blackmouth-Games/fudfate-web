@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils';
 
 interface TarotCardProps {
   imageUrl: string;
-  number?: string; // Made optional since we won't use it
   title: string;
   className?: string;
   delay?: number;
