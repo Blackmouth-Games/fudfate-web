@@ -21,9 +21,10 @@ import "./i18n";
 
 const queryClient = new QueryClient();
 
+// Move useEffect inside the functional component
 const App = () => {
+  // Set the title inside the component
   useEffect(() => {
-    // Set the title
     document.title = "FudFate - Web3 Tarot Experience";
   }, []);
 
