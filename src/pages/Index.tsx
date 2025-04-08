@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import GlitchText from '@/components/GlitchText';
@@ -6,6 +5,9 @@ import AnimatedSection from '@/components/AnimatedSection';
 import TarotCard from '@/components/TarotCard';
 import { Link } from 'react-router-dom';
 import BackToTop from '@/components/BackToTop';
+import GlitchLogo from '@/components/GlitchLogo';
+import { Button } from '@/components/ui/button';
+
 
 const Index = () => {
   const { t } = useTranslation();
@@ -24,38 +26,12 @@ const Index = () => {
       imageUrl: '/lovable-uploads/fe874e9d-7e40-4f50-bbae-c0d5b052eba1.png',
       number: '2',
       title: t('cards.card2'),
-    },
-    {
-      imageUrl: '/lovable-uploads/dde495a3-96cf-43c3-990d-68f4b0bc2fe8.png',
-      number: '3',
-      title: t('cards.card3'),
-    },
-    {
-      imageUrl: '/lovable-uploads/9bc2f50e-3756-43c8-9462-34a97aa5531c.png',
-      number: '0',
-      title: t('cards.card4'),
-    },
-    {
-      imageUrl: '/lovable-uploads/7d9fc75d-6461-46e5-b486-1541a65b0468.png',
-      number: '4',
-      title: 'The Exchange',
-    },
-    {
-      imageUrl: '/lovable-uploads/3b4adc9b-9960-40fa-a966-11cee7809c56.png',
-      number: '5',
-      title: 'The Whitepaper',
-    },
-    {
-      imageUrl: '/lovable-uploads/acba09e5-803c-48fe-b899-92d90f7d4b7c.png',
-      number: '6',
-      title: 'The Fork',
-    },
-    {
-      imageUrl: '/lovable-uploads/b113532a-d472-4a91-b7c3-6acc69eac308.png',
-      number: '7',
-      title: 'The Launchpad',
     }
   ];
+
+  const handleClick = () => {
+    // Implementation of handleClick function
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
@@ -65,14 +41,9 @@ const Index = () => {
       <section id="hero" className="min-h-screen relative flex items-center justify-center py-16 px-4 md:px-8 lg:px-16 overflow-hidden">
         <div className="max-w-6xl w-full mx-auto text-center relative z-10">
           <AnimatedSection animation="fade-in" className="mb-6">
-            <img 
-              src="/lovable-uploads/e983f33c-e21f-4a11-90f5-0d73db998e39.png" 
-              alt="FUDfate Logo" 
-              className="h-32 md:h-40 mx-auto mb-8"
+            <GlitchLogo 
+              imageUrl="/lovable-uploads/e983f33c-e21f-4a11-90f5-0d73db998e39.png" 
             />
-            <h1 className="text-4xl md:text-6xl font-pixel-2p mb-4 text-black">
-              <GlitchText text={t('hero.title')} goldEffect className="inline-block" />
-            </h1>
             <p className="text-xl md:text-2xl text-secondary font-pixel mb-8">
               {t('hero.subtitle')}
             </p>
@@ -87,7 +58,8 @@ const Index = () => {
               to="https://app-fudfate.blackmouthgames.com/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="pixel-btn pixel-btn-accent text-xl font-pixel"
+              className="pixel-btn pixel-btn-accent text-xl font-pixel glitch-button"
+              data-text={t('hero.cta')}
             >
               {t('hero.cta')}
             </Link>
@@ -173,7 +145,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4 md:px-8 lg:px-16 bg-gray-100 relative">
+      <section className="py-16 px-4 md:px-8 lg:px-16" style={{ backgroundColor: '#FAD12B' }}>
         <div className="max-w-6xl mx-auto text-center">
           <AnimatedSection animation="fade-in" className="mb-6">
             <GlitchText text={t('cta.title')} goldEffect className="text-3xl md:text-4xl font-pixel-2p mb-4 text-black" />
@@ -182,14 +154,7 @@ const Index = () => {
             </p>
           </AnimatedSection>
           <AnimatedSection animation="slide-in-up" delay={300}>
-            <Link 
-              to="https://app-fudfate.blackmouthgames.com/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="pixel-btn pixel-btn-accent text-xl font-pixel animate-pulse-glow"
-            >
-              {t('cta.button')}
-            </Link>
+            <Button variant="glitch" onClick={handleClick}>Reveal Your Destiny</Button>
           </AnimatedSection>
         </div>
       </section>

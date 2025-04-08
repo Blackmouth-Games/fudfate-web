@@ -11,9 +11,7 @@ interface GlitchTextProps {
 const GlitchText = ({ text, className, goldEffect = false }: GlitchTextProps) => {
   return (
     <div className={cn("glitch relative", goldEffect && "gold-text", className)}>
-      {text}
-      <span aria-hidden="true">{text}</span>
-      <span aria-hidden="true">{text}</span>
+      {text}      
     </div>
   );
 };
