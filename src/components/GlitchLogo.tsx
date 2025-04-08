@@ -1,13 +1,30 @@
+
 import React from 'react';
 
-const GlitchLogo = ({ imageUrl }) => {
+interface GlitchLogoProps {
+  imageUrl: string;
+}
+
+const GlitchLogo = ({ imageUrl }: GlitchLogoProps) => {
     return (
         <div className="glitch-logo">
-            <img 
-                src={imageUrl} 
-                alt="FUDfate Logo" 
-                className="h-32 md:h-40 mx-auto mb-8 glitch" 
-            />
+            <div className="logo-container relative inline-block">
+                <img 
+                    src={imageUrl} 
+                    alt="FUDfate Logo" 
+                    className="h-32 md:h-40 mx-auto mb-8" 
+                />
+                <img 
+                    src={imageUrl} 
+                    alt="FUDfate Logo Glitch 1" 
+                    className="absolute top-0 left-0 h-32 md:h-40 mx-auto mb-8 glitch-effect-1" 
+                />
+                <img 
+                    src={imageUrl} 
+                    alt="FUDfate Logo Glitch 2" 
+                    className="absolute top-0 left-0 h-32 md:h-40 mx-auto mb-8 glitch-effect-2" 
+                />
+            </div>
         </div>
     );
 };

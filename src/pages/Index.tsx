@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import GlitchText from '@/components/GlitchText';
@@ -7,7 +8,13 @@ import { Link } from 'react-router-dom';
 import BackToTop from '@/components/BackToTop';
 import GlitchLogo from '@/components/GlitchLogo';
 import { Button } from '@/components/ui/button';
-
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const Index = () => {
   const { t } = useTranslation();
@@ -19,18 +26,38 @@ const Index = () => {
   const cards = [
     {
       imageUrl: '/lovable-uploads/67d4084b-d7c2-4a91-bc0c-178644bbd65f.png',
-      number: '1',
-      title: t('cards.card1'),
+      number: '0',
+      title: 'The Fool',
     },
     {
       imageUrl: '/lovable-uploads/fe874e9d-7e40-4f50-bbae-c0d5b052eba1.png',
+      number: '1',
+      title: 'The Magician',
+    },
+    {
+      imageUrl: '/lovable-uploads/e983f33c-e21f-4a11-90f5-0d73db998e39.png',
       number: '2',
-      title: t('cards.card2'),
+      title: 'Crypto Fortune',
+    },
+    {
+      imageUrl: '/lovable-uploads/b40a6db1-794b-4a12-a495-70cba49771b4.png',
+      number: '3',
+      title: 'The HODLer',
+    },
+    {
+      imageUrl: '/lovable-uploads/7eeb5f11-8ebb-45b3-aa32-af65c0cc89ba.png',
+      number: '4',
+      title: 'The Emperor',
+    },
+    {
+      imageUrl: '/lovable-uploads/4e84fbc3-0363-4303-82c9-aad716f3bd02.png',
+      number: '5',
+      title: 'The Degen',
     }
   ];
 
   const handleClick = () => {
-    // Implementation of handleClick function
+    window.open('https://app-fudfate.blackmouthgames.com/', '_blank');
   };
 
   return (
@@ -54,15 +81,14 @@ const Index = () => {
             </p>
           </AnimatedSection>
           <AnimatedSection animation="slide-in-up" delay={600}>
-            <Link 
-              to="https://app-fudfate.blackmouthgames.com/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="pixel-btn pixel-btn-accent text-xl font-pixel glitch-button"
+            <Button 
+              variant="glitch" 
+              onClick={handleClick}
               data-text={t('hero.cta')}
+              className="text-xl font-pixel glitch-button"
             >
               {t('hero.cta')}
-            </Link>
+            </Button>
           </AnimatedSection>
         </div>
       </section>
@@ -106,41 +132,31 @@ const Index = () => {
             </p>
           </AnimatedSection>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-6 mb-12">
-            {cards.slice(0, 4).map((card, index) => (
-              <AnimatedSection 
-                key={index}
-                animation="slide-in-up" 
-                delay={100 * (index + 1)} 
-                className="floating"
-                style={{ animationDelay: `${0.2 * index}s` }}
-              >
-                <TarotCard 
-                  imageUrl={card.imageUrl} 
-                  number={card.number} 
-                  title={card.title} 
-                />
-              </AnimatedSection>
-            ))}
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-6">
-            {cards.slice(4).map((card, index) => (
-              <AnimatedSection 
-                key={index + 4}
-                animation="slide-in-up" 
-                delay={100 * (index + 5)} 
-                className="floating"
-                style={{ animationDelay: `${0.2 * (index + 4)}s` }}
-              >
-                <TarotCard 
-                  imageUrl={card.imageUrl} 
-                  number={card.number} 
-                  title={card.title} 
-                />
-              </AnimatedSection>
-            ))}
-          </div>
+          <Carousel 
+            className="w-full max-w-5xl mx-auto"
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+          >
+            <CarouselContent>
+              {cards.map((card, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="floating" style={{ animationDelay: `${0.2 * index}s` }}>
+                    <TarotCard 
+                      imageUrl={card.imageUrl} 
+                      number={card.number} 
+                      title={card.title} 
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-center mt-8">
+              <CarouselPrevious className="relative static mr-2" />
+              <CarouselNext className="relative static ml-2" />
+            </div>
+          </Carousel>
         </div>
       </section>
 
@@ -154,7 +170,12 @@ const Index = () => {
             </p>
           </AnimatedSection>
           <AnimatedSection animation="slide-in-up" delay={300}>
-            <Button variant="glitch" onClick={handleClick} data-text="Reveal Your Destiny">
+            <Button 
+              variant="glitch" 
+              onClick={handleClick} 
+              data-text="Reveal Your Destiny"
+              className="text-xl font-pixel glitch-button"
+            >
               Reveal Your Destiny
             </Button>
           </AnimatedSection>
