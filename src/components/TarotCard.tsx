@@ -17,7 +17,7 @@ const TarotCard = ({ imageUrl, number, title, className, delay = 0 }: TarotCardP
       style={{ animationDelay: `${delay}ms` }}
     >
       <div className="card-3d w-full max-w-[240px] mx-auto">
-        <div className="relative">
+        <div className="relative pb-8"> {/* Added padding-bottom to accommodate the title */}
           <div className="aspect-[3/5] overflow-hidden gold-frame rounded-lg">
             <img 
               src={imageUrl} 
@@ -28,7 +28,7 @@ const TarotCard = ({ imageUrl, number, title, className, delay = 0 }: TarotCardP
           <div className="absolute top-2 left-0 right-0 text-center">
             <span className="gold-text text-lg font-pixel-2p">{number}</span>
           </div>
-          <div className="absolute -bottom-6 left-0 right-0 text-center">
+          <div className="absolute -bottom-2 left-0 right-0 text-center"> {/* Adjusted position */}
             <div className="glitch inline-block gold-text text-lg font-pixel-2p">
               {title}
               <span aria-hidden="true">{title}</span>

@@ -123,9 +123,9 @@ const Index = () => {
       </section>
 
       {/* Cards Section */}
-      <section id="cards" className="py-16 px-4 md:px-8 lg:px-16 relative">
+      <section id="cards" className="py-20 px-4 md:px-8 lg:px-16 relative"> {/* Added more padding */}
         <div className="max-w-6xl mx-auto">
-          <AnimatedSection animation="fade-in" className="mb-12 text-center">
+          <AnimatedSection animation="fade-in" className="mb-16 text-center"> {/* Added more margin */}
             <GlitchText text={t('cards.title')} goldEffect className="text-3xl md:text-4xl font-pixel-2p mb-6 text-black" />
             <p className="text-lg md:text-xl text-gray-700 font-pixel max-w-3xl mx-auto">
               {t('cards.description')}
@@ -135,13 +135,13 @@ const Index = () => {
           <Carousel 
             className="w-full max-w-5xl mx-auto"
             opts={{
-              align: "start",
+              align: "center", // Changed from "start" to "center"
               loop: true,
             }}
           >
-            <CarouselContent>
+            <CarouselContent className="py-10"> {/* Added vertical padding */}
               {cards.map((card, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 px-6"> {/* Added more horizontal padding */}
                   <div className="floating" style={{ animationDelay: `${0.2 * index}s` }}>
                     <TarotCard 
                       imageUrl={card.imageUrl} 
@@ -152,7 +152,7 @@ const Index = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center mt-12"> {/* Added more margin top */}
               <CarouselPrevious className="relative static mr-2" />
               <CarouselNext className="relative static ml-2" />
             </div>
