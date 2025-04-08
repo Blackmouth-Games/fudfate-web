@@ -1,3 +1,4 @@
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +40,146 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Glitch Logo Animation */
+.logo-container {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-effect-1 {
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+  opacity: 0.8;
+}
+
+.glitch-effect-2 {
+  clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+  opacity: 0.8;
+}
+
+@keyframes glitch-anim-1 {
+  0% {
+    transform: translate(0, 0);
+    filter: hue-rotate(0deg);
+  }
+  30% {
+    transform: translate(2px, -2px);
+    filter: hue-rotate(90deg);
+  }
+  50% {
+    transform: translate(-1px, 1px);
+    filter: hue-rotate(180deg);
+  }
+  70% {
+    transform: translate(2px, 2px);
+    filter: hue-rotate(270deg);
+  }
+  100% {
+    transform: translate(-2px, -2px);
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    transform: translate(0, 0);
+    filter: hue-rotate(270deg);
+  }
+  30% {
+    transform: translate(-2px, 2px);
+    filter: hue-rotate(180deg);
+  }
+  50% {
+    transform: translate(1px, -1px);
+    filter: hue-rotate(90deg);
+  }
+  70% {
+    transform: translate(-2px, -2px);
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    transform: translate(2px, 2px);
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Improved Button Glitch Effect */
+.glitch-button {
+  position: relative;
+  overflow: hidden;
+  background-color: #FAD12B;
+  color: black;
+  border: 2px solid black;
+  padding: 10px 20px;
+  text-align: center;
+  font-family: 'VT323', monospace;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  box-shadow: 0 -4px 0 0 #000, 0 4px 0 0 #000, -4px 0 0 0 #000, 4px 0 0 0 #000;
+  transition: all 0.2s ease;
+}
+
+.glitch-button::before,
+.glitch-button::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FAD12B;
+}
+
+.glitch-button::before {
+  left: 2px;
+  text-shadow: -2px 0 red;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  animation: glitch-button-anim-1 2s infinite linear alternate-reverse;
+}
+
+.glitch-button::after {
+  left: -2px;
+  text-shadow: 2px 0 blue;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  animation: glitch-button-anim-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-button-anim-1 {
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes glitch-button-anim-2 {
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(-2px);
+  }
+}
+
+.glitch-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 -4px 0 0 #000, 0 6px 0 0 #000, -4px 0 0 0 #000, 4px 0 0 0 #000;
+}
+
+.glitch-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 -4px 0 0 #000, 0 2px 0 0 #000, -4px 0 0 0 #000, 4px 0 0 0 #000;
 }
