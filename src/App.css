@@ -111,7 +111,7 @@
   overflow: hidden;
   background-color: #FAD12B;
   color: black;
-  border: 2px solid black;
+  border: 4px solid black;
   padding: 10px 20px;
   text-align: center;
   font-family: 'VT323', monospace;
@@ -225,4 +225,44 @@
 
 .floating {
   animation: floating 4s ease-in-out infinite;
+}
+
+/* Logo Glitch Animation */
+.logo-glitch {
+  animation: logo-glitch 2s infinite alternate-reverse;
+}
+
+@keyframes logo-glitch {
+  0% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  5% {
+    transform: translate(-2px, 2px);
+    filter: hue-rotate(45deg);
+  }
+  10% {
+    transform: translate(2px, -2px);
+    filter: hue-rotate(90deg);
+  }
+  15% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  85% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  90% {
+    transform: translate(1px, -1px);
+    filter: hue-rotate(-45deg);
+  }
+  95% {
+    transform: translate(-1px, 1px);
+    filter: hue-rotate(-90deg);
+  }
+  100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
 }

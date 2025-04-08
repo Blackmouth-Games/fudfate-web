@@ -75,7 +75,7 @@ const Navbar = () => {
                   to="https://app-fudfate.blackmouthgames.com/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="bg-accent text-black font-bold px-4 py-2 rounded hover:bg-accent/90 transition-colors pixel-btn pixel-btn-accent"
+                  className="text-black font-bold px-4 py-2 rounded transition-colors pixel-btn pixel-btn-accent"
                 >
                   {t('nav.app')}
                 </Link>
@@ -122,7 +122,7 @@ const Navbar = () => {
               to="https://app-fudfate.blackmouthgames.com/" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="block w-full text-center bg-accent text-black font-bold px-4 py-2 rounded hover:bg-accent/90 transition-colors mt-4 pixel-btn pixel-btn-accent"
+              className="block w-full text-center text-black font-bold px-4 py-2 rounded transition-colors mt-4 pixel-btn pixel-btn-accent"
             >
               {t('nav.app')}
             </Link>

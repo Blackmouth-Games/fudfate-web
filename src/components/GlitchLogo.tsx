@@ -12,7 +12,7 @@ const GlitchLogo = ({ imageUrl }: GlitchLogoProps) => {
                 <img 
                     src={imageUrl} 
                     alt="FUDfate Logo" 
-                    className="h-32 md:h-40 mx-auto mb-8" 
+                    className="h-32 md:h-40 mx-auto mb-8 logo-glitch" 
                 />
                 <img 
                     src={imageUrl} 

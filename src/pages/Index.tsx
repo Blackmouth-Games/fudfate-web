@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import GlitchText from '@/components/GlitchText';
@@ -26,32 +25,26 @@ const Index = () => {
   const cards = [
     {
       imageUrl: '/lovable-uploads/67d4084b-d7c2-4a91-bc0c-178644bbd65f.png',
-      number: '0',
       title: 'The Fool',
     },
     {
       imageUrl: '/lovable-uploads/fe874e9d-7e40-4f50-bbae-c0d5b052eba1.png',
-      number: '1',
       title: 'The Magician',
     },
     {
       imageUrl: '/lovable-uploads/e983f33c-e21f-4a11-90f5-0d73db998e39.png',
-      number: '2',
       title: 'Crypto Fortune',
     },
     {
       imageUrl: '/lovable-uploads/b40a6db1-794b-4a12-a495-70cba49771b4.png',
-      number: '3',
       title: 'The HODLer',
     },
     {
       imageUrl: '/lovable-uploads/7eeb5f11-8ebb-45b3-aa32-af65c0cc89ba.png',
-      number: '4',
       title: 'The Emperor',
     },
     {
       imageUrl: '/lovable-uploads/4e84fbc3-0363-4303-82c9-aad716f3bd02.png',
-      number: '5',
       title: 'The Degen',
     }
   ];
@@ -123,9 +116,9 @@ const Index = () => {
       </section>
 
       {/* Cards Section */}
-      <section id="cards" className="py-20 px-4 md:px-8 lg:px-16 relative"> {/* Added more padding */}
+      <section id="cards" className="py-20 px-4 md:px-8 lg:px-16 relative">
         <div className="max-w-6xl mx-auto">
-          <AnimatedSection animation="fade-in" className="mb-16 text-center"> {/* Added more margin */}
+          <AnimatedSection animation="fade-in" className="mb-16 text-center">
             <GlitchText text={t('cards.title')} goldEffect className="text-3xl md:text-4xl font-pixel-2p mb-6 text-black" />
             <p className="text-lg md:text-xl text-gray-700 font-pixel max-w-3xl mx-auto">
               {t('cards.description')}
@@ -135,24 +128,23 @@ const Index = () => {
           <Carousel 
             className="w-full max-w-5xl mx-auto"
             opts={{
-              align: "center", // Changed from "start" to "center"
+              align: "center",
               loop: true,
             }}
           >
-            <CarouselContent className="py-10"> {/* Added vertical padding */}
+            <CarouselContent className="py-10">
               {cards.map((card, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 px-6"> {/* Added more horizontal padding */}
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 px-6">
                   <div className="floating" style={{ animationDelay: `${0.2 * index}s` }}>
                     <TarotCard 
-                      imageUrl={card.imageUrl} 
-                      number={card.number} 
+                      imageUrl={card.imageUrl}
                       title={card.title} 
                     />
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center mt-12"> {/* Added more margin top */}
+            <div className="flex justify-center mt-12">
               <CarouselPrevious className="relative static mr-2" />
               <CarouselNext className="relative static ml-2" />
             </div>
