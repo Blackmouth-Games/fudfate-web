@@ -16,11 +16,11 @@ const LanguageSwitcher = () => {
   return (
     <Button 
       onClick={toggleLanguage} 
-      variant="outline" 
+      variant="ghost" 
       size={isMobile ? "sm" : "default"} 
-      className="font-pixel bg-accent text-black border-black hover:bg-accent/80 hover:text-black"
+      className="text-white hover:text-accent hover:bg-transparent"
     >
-      {i18n.language === 'en' ? 'ES 🌍' : 'EN 🌍'}
+      {i18n.language === 'en' ? 'ES' : 'EN'}
     </Button>
   );
 };
