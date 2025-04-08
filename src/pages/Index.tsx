@@ -154,7 +154,9 @@ const Index = () => {
             </p>
           </AnimatedSection>
           <AnimatedSection animation="slide-in-up" delay={300}>
-            <Button variant="glitch" onClick={handleClick}>Reveal Your Destiny</Button>
+            <Button variant="glitch" onClick={handleClick} data-text="Reveal Your Destiny">
+              Reveal Your Destiny
+            </Button>
           </AnimatedSection>
         </div>
       </section>
