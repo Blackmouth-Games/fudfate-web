@@ -7,27 +7,91 @@ export interface TarotCardData {
 
 export const tarotCards: TarotCardData[] = [
   {
-    imageUrl: '/lovable-uploads/67d4084b-d7c2-4a91-bc0c-178644bbd65f.png',
-    title: 'The Fool',
-  },
-  {
-    imageUrl: '/lovable-uploads/fe874e9d-7e40-4f50-bbae-c0d5b052eba1.png',
-    title: 'The Magician',
-  },
-  {
-    imageUrl: '/lovable-uploads/e983f33c-e21f-4a11-90f5-0d73db998e39.png',
-    title: 'Crypto Fortune',
-  },
-  {
-    imageUrl: '/lovable-uploads/b40a6db1-794b-4a12-a495-70cba49771b4.png',
-    title: 'The HODLer',
-  },
-  {
-    imageUrl: '/lovable-uploads/7eeb5f11-8ebb-45b3-aa32-af65c0cc89ba.png',
-    title: 'The Emperor',
-  },
-  {
-    imageUrl: '/lovable-uploads/4e84fbc3-0363-4303-82c9-aad716f3bd02.png',
+    imageUrl: '/img/cards/carddeck1/deck1_0_TheDegen.png',
     title: 'The Degen',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_1_TheMiner.png',
+    title: 'The Miner',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_2_TheOracle.png',
+    title: 'The Oracle',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_3_TheWhale.png',
+    title: 'The Whale',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_4_TheExchange.png',
+    title: 'The Exchange',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_5_TheWhitePaper.png',
+    title: 'The White Paper',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_6_TheFork.png',
+    title: 'The Fork',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_7_TheLaunchpad.png',
+    title: 'The Launchpad',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_8_TheSmartContract.png',
+    title: 'The Smart Contract',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_9_ThePrivateKey.png',
+    title: 'The Private Key',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_10_TheAirdrop.png',
+    title: 'The Airdrop',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_11_TheHoldler.png',
+    title: 'The Holdler',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_12_TheStablecoin.png',
+    title: 'The Stablecoin',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_13_TheRugpull.png',
+    title: 'The Rugpull',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_14_TheWallet.png',
+    title: 'The Wallet',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_15_TheFOMO.png',
+    title: 'The FOMO',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_16_TheHacker.png',
+    title: 'The Hacker',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_17_TheNFT.png',
+    title: 'The NFT',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_18_TheMoon.png',
+    title: 'The Moon',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_19_TheMemecoin.png',
+    title: 'The Memecoin',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_20_TheHalving.png',
+    title: 'The Halving',
+  },
+  {
+    imageUrl: '/img/cards/carddeck1/deck1_21_TheDAO.png',
+    title: 'The DAO',
   }
 ];
