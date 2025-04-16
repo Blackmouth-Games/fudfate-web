@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import GlitchText from '@/components/GlitchText';
@@ -6,6 +7,7 @@ import GlitchLogo from '@/components/GlitchLogo';
 import TarotCardSection from '@/components/TarotCardSection';
 import WhitelistForm from '@/components/WhitelistForm';
 import BackToTop from '@/components/BackToTop';
+import { Button } from '@/components/ui/button';
 
 const Index = () => {
   const { t } = useTranslation();
@@ -13,6 +15,10 @@ const Index = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  
+  const handleClick = () => {
+    window.open('https://www.app.fudfate.xyz/', '_blank');
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
