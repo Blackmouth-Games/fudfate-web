@@ -28,9 +28,12 @@ const Index = () => {
       <section id="hero" className="min-h-screen relative flex items-center justify-center py-16 px-4 md:px-8 lg:px-16 overflow-hidden">
         <div className="max-w-6xl w-full mx-auto text-center relative z-10">
           <AnimatedSection animation="fade-in" className="mb-6">
-            <GlitchLogo 
-              imageUrl="/img/logos/logo.png" 
-            />
+            <div className="flex justify-center mb-8">
+              <GlitchLogo 
+                imageUrl="/img/logos/logo.png"
+                className="w-48 md:w-64" 
+              />
+            </div>
             <p className="text-xl md:text-2xl text-secondary font-pixel mb-8">
               {t('hero.subtitle')}
             </p>
@@ -49,7 +52,12 @@ const Index = () => {
             >
               {t('hero.cta')}
             </Button>
-            <div className="mt-8">
+            <div className="mt-12 space-y-4">
+              <GlitchText 
+                text="🚀 ANON, DON'T MISS THE MOON! JOIN THE WHITELIST NOW! 🌙" 
+                className="text-2xl md:text-3xl font-pixel-2p mb-6"
+                goldEffect
+              />
               <WhitelistForm />
             </div>
           </AnimatedSection>
