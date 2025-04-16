@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
@@ -66,21 +65,22 @@ const WhitelistForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex gap-4 w-full max-w-xl mx-auto">
+    <div className="flex flex-col gap-4 w-full max-w-xl mx-auto">
       <Input
         {...register("wallet", { required: true })}
         placeholder="Enter your Solana wallet address"
-        className="flex-1 font-pixel text-sm"
+        className="font-pixel text-sm"
       />
       <Button 
         type="submit" 
         disabled={isSubmitting}
         variant="glitch"
         className="font-pixel"
+        onClick={handleSubmit(onSubmit)}
       >
         Join Whitelist
       </Button>
-    </form>
+    </div>
   );
 };
 

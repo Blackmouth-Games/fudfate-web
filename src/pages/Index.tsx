@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import GlitchText from '@/components/GlitchText';
@@ -39,7 +40,7 @@ const Index = () => {
               {t('hero.description')}
             </p>
           </AnimatedSection>
-          <AnimatedSection animation="slide-in-up" delay={600}>
+          <AnimatedSection animation="slide-in-up" delay={600} className="space-y-8">
             <Button 
               variant="glitch" 
               onClick={handleClick}
@@ -48,6 +49,9 @@ const Index = () => {
             >
               {t('hero.cta')}
             </Button>
+            <div className="mt-8">
+              <WhitelistForm />
+            </div>
           </AnimatedSection>
         </div>
       </section>
@@ -93,7 +97,7 @@ const Index = () => {
               {t('cta.subtitle')}
             </p>
           </AnimatedSection>
-          <AnimatedSection animation="slide-in-up" delay={300} className="space-y-8">
+          <AnimatedSection animation="slide-in-up" delay={300}>
             <Button 
               variant="glitch" 
               onClick={handleClick} 
@@ -102,7 +106,6 @@ const Index = () => {
             >
               Reveal Your Destiny
             </Button>
-            <WhitelistForm />
           </AnimatedSection>
         </div>
       </section>
