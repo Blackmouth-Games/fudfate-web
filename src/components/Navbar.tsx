@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -72,7 +71,7 @@ const Navbar = () => {
                   {t('nav.cards')}
                 </button>
                 <Link 
-                  to="https://app-fudfate.blackmouthgames.com/" 
+                  to="https://www.app.fudfate.xyz/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-black font-bold px-4 py-2 rounded transition-colors pixel-btn pixel-btn-accent"
@@ -119,7 +118,7 @@ const Navbar = () => {
               {t('nav.cards')}
             </button>
             <Link 
-              to="https://app-fudfate.blackmouthgames.com/" 
+              to="https://www.app.fudfate.xyz/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="block w-full text-center text-black font-bold px-4 py-2 rounded transition-colors mt-4 pixel-btn pixel-btn-accent"
