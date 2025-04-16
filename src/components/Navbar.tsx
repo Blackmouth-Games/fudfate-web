@@ -13,7 +13,6 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  // Smooth scroll function
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -71,7 +70,7 @@ const Navbar = () => {
                   {t('nav.cards')}
                 </button>
                 <Link 
-                  to="https://www.app.fudfate.xyz/" 
+                  to="https://app.fudfate.xyz/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-black font-bold px-4 py-2 rounded transition-colors pixel-btn pixel-btn-accent"
@@ -95,7 +94,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {isMobile && isMenuOpen && (
         <div className="md:hidden bg-white shadow-lg">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
@@ -118,7 +116,7 @@ const Navbar = () => {
               {t('nav.cards')}
             </button>
             <Link 
-              to="https://www.app.fudfate.xyz/" 
+              to="https://app.fudfate.xyz/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="block w-full text-center text-black font-bold px-4 py-2 rounded transition-colors mt-4 pixel-btn pixel-btn-accent"
