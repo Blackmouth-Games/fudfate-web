@@ -27,7 +27,8 @@ const WhitelistForm = () => {
 
       const result = await response.json();
 
-      if (result.result === true) {
+      // Check for success condition based on the actual response structure
+      if (result.success === true || (Array.isArray(result) && result[0]?.success === true)) {
         setIsSuccess(true);
         toast({
           title: "Success! 🎉",
