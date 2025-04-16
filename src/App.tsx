@@ -25,15 +25,13 @@ const queryClient = new QueryClient();
 const App = () => {
   // Set the title inside the component
   useEffect(() => {
-    document.title = "FudFate - Web3 Tarot Experience";
+    document.title = "Fudfate";
   }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
+      <BrowserRouter>
+        <TooltipProvider>
           <div className="flex flex-col min-h-screen bg-white">
             <Navbar />
             <main className="flex-grow">
@@ -47,8 +45,10 @@ const App = () => {
             <Footer />
             <CookieConsent />
           </div>
-        </BrowserRouter>
-      </TooltipProvider>
+          <Toaster />
+          <Sonner />
+        </TooltipProvider>
+      </BrowserRouter>
     </QueryClientProvider>
   );
 };
