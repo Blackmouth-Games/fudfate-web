@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import GlitchText from '@/components/GlitchText';
@@ -17,7 +16,7 @@ const Index = () => {
   }, []);
 
   const handleClick = () => {
-    window.open('https://app-fudfate.blackmouthgames.com/', '_blank');
+    window.open('https://www.app.fudfate.xyz/', '_blank');
   };
 
   return (
@@ -31,7 +30,6 @@ const Index = () => {
             <div className="flex justify-center mb-8">
               <GlitchLogo 
                 imageUrl="/img/logos/logo.png"
-                className="w-48 md:w-64" 
               />
             </div>
             <p className="text-xl md:text-2xl text-secondary font-pixel mb-8">
