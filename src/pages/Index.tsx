@@ -17,7 +17,7 @@ const Index = () => {
   }, []);
   
   const handleClick = () => {
-    window.open('https://www.app.fudfate.xyz/', '_blank');
+    window.open('https://app.fudfate.xyz/', '_blank');
   };
 
   return (
