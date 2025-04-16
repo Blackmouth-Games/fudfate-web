@@ -2,11 +2,10 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import GlitchText from '@/components/GlitchText';
 import AnimatedSection from '@/components/AnimatedSection';
-import { Button } from '@/components/ui/button';
-import BackToTop from '@/components/BackToTop';
 import GlitchLogo from '@/components/GlitchLogo';
 import TarotCardSection from '@/components/TarotCardSection';
 import WhitelistForm from '@/components/WhitelistForm';
+import BackToTop from '@/components/BackToTop';
 
 const Index = () => {
   const { t } = useTranslation();
@@ -14,10 +13,6 @@ const Index = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const handleClick = () => {
-    window.open('https://www.app.fudfate.xyz/', '_blank');
-  };
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
@@ -36,23 +31,10 @@ const Index = () => {
               {t('hero.subtitle')}
             </p>
           </AnimatedSection>
-          <AnimatedSection animation="slide-in-up" delay={300} className="mb-10">
-            <p className="text-lg md:text-xl text-gray-700 font-pixel max-w-3xl mx-auto">
-              {t('hero.description')}
-            </p>
-          </AnimatedSection>
           <AnimatedSection animation="slide-in-up" delay={600} className="space-y-8">
-            <Button 
-              variant="glitch" 
-              onClick={handleClick}
-              data-text={t('hero.cta')}
-              className="text-xl font-pixel glitch-button"
-            >
-              {t('hero.cta')}
-            </Button>
             <div className="mt-12 space-y-4">
               <GlitchText 
-                text="🚀 ANON, DON'T MISS THE MOON! JOIN THE WHITELIST NOW! 🌙" 
+                text={t('whitelist.cta')}
                 className="text-2xl md:text-3xl font-pixel-2p mb-6"
                 goldEffect
               />
