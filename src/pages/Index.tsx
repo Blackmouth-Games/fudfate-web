@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import GlitchText from '@/components/GlitchText';
@@ -7,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import BackToTop from '@/components/BackToTop';
 import GlitchLogo from '@/components/GlitchLogo';
 import TarotCardSection from '@/components/TarotCardSection';
+import WhitelistForm from '@/components/WhitelistForm';
 
 const Index = () => {
   const { t } = useTranslation();
@@ -93,7 +93,7 @@ const Index = () => {
               {t('cta.subtitle')}
             </p>
           </AnimatedSection>
-          <AnimatedSection animation="slide-in-up" delay={300}>
+          <AnimatedSection animation="slide-in-up" delay={300} className="space-y-8">
             <Button 
               variant="glitch" 
               onClick={handleClick} 
@@ -102,6 +102,7 @@ const Index = () => {
             >
               Reveal Your Destiny
             </Button>
+            <WhitelistForm />
           </AnimatedSection>
         </div>
       </section>
