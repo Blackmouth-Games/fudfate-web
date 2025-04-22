@@ -14,7 +14,7 @@ const WhitelistForm = () => {
 
   const onSubmit = async (data: WhitelistFormData) => {
     try {
-      const response = await fetch('https://primary-production-fe05.up.railway.app/webhook-test/ae4eccb6-2001-44ad-b373-c9fe1ef3949e', {
+      const response = await fetch('https://primary-production-fe05.up.railway.app/webhook/ae4eccb6-2001-44ad-b373-c9fe1ef3949e', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,8 +24,10 @@ const WhitelistForm = () => {
 
       const result = await response.json();
 
-      // Check for success condition based on the actual response structure
-      if (result.success === true) {
+      // Check for success condition for both direct response and array response
+      const isSuccess = result.success === true || (Array.isArray(result) && result[0]?.success === true);
+      
+      if (isSuccess) {
         toast({
           title: "Success! 🎉",
           description: "You're now on the whitelist!",
