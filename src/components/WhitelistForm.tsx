@@ -1,10 +1,8 @@
-
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { Sparkles } from "lucide-react";
 
 interface WhitelistFormData {
   wallet: string;
@@ -12,7 +10,6 @@ interface WhitelistFormData {
 
 const WhitelistForm = () => {
   const { register, handleSubmit, formState: { isSubmitting } } = useForm<WhitelistFormData>();
-  const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
 
   const onSubmit = async (data: WhitelistFormData) => {
@@ -28,12 +25,13 @@ const WhitelistForm = () => {
       const result = await response.json();
 
       // Check for success condition based on the actual response structure
-      if (result.success === true || (Array.isArray(result) && result[0]?.success === true)) {
-        setIsSuccess(true);
+      if (result.success === true) {
         toast({
           title: "Success! 🎉",
           description: "You're now on the whitelist!",
         });
+        // Redirigir a la página de congratulaciones
+        window.location.href = 'https://app.fudfate.xyz/congrats';
       } else {
         toast({
           variant: "destructive",
@@ -49,22 +47,6 @@ const WhitelistForm = () => {
       });
     }
   };
-
-  if (isSuccess) {
-    return (
-      <div className="text-center py-12 px-4 animate-fade-in">
-        <div className="max-w-xl mx-auto space-y-6">
-          <h2 className="text-3xl font-pixel-2p text-primary animate-bounce">
-            <Sparkles className="inline-block mr-2" />
-            Congrats! You're on the Whitelist!
-          </h2>
-          <p className="text-lg font-pixel text-gray-700">
-            Stay tuned to our social media for more information about the next steps!
-          </p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="flex flex-col items-center gap-4 w-full max-w-lg mx-auto">
