@@ -14,7 +14,7 @@ const WhitelistForm = () => {
 
   const onSubmit = async (data: WhitelistFormData) => {
     try {
-      const response = await fetch('https://primary-production-fe05.up.railway.app/webhook/ae4eccb6-2001-44ad-b373-c9fe1ef3949e', {
+      const response = await fetch('https://primary-production-fe05.up.railway.app/webhook-test/ae4eccb6-2001-44ad-b373-c9fe1ef3949e', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
