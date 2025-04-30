@@ -57,7 +57,7 @@ This project is built with:
 
 ## How can I deploy this project?
 
-- Automated deploy on PROD enviroment to:https://fudfate.blackmouthgames.com/
+- Automated deploy on PROD enviroment to:https://fudfate.xyz/
 [![Netlify Status](https://api.netlify.com/api/v1/badges/401a8323-3f5a-46c6-adb8-347e58acf620/deploy-status)](https://app.netlify.com/sites/fudfate/deploys)
 
 
