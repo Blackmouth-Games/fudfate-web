@@ -3,9 +3,10 @@ import '../styles/logo.css';
 
 interface GlitchLogoProps {
   imageUrl: string;
+  subtitle?: string;
 }
 
-const GlitchLogo = ({ imageUrl }: GlitchLogoProps) => {
+const GlitchLogo = ({ imageUrl, subtitle }: GlitchLogoProps) => {
     return (
         <div className="glitch-logo">
             <div className="logo-container relative inline-block">
@@ -25,7 +26,12 @@ const GlitchLogo = ({ imageUrl }: GlitchLogoProps) => {
                     className="absolute top-0 left-0 h-32 md:h-40 mx-auto mb-8 glitch-effect-2" 
                 />
             </div>
-            <div className="flex justify-center gap-4 mt-2">
+            {subtitle && (
+                <p className="text-xl md:text-2xl text-secondary font-pixel mb-8 mt-2 text-center">
+                    {subtitle}
+                </p>
+            )}
+            <div className="flex justify-center gap-4 mt-6">
                 {/* X (Twitter) Button */}
                 <a
                     href="https://x.com/FudFate"

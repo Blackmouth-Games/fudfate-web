@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import GlitchText from '@/components/GlitchText';
@@ -31,11 +30,9 @@ const Index = () => {
             <div className="flex justify-center mb-8">
               <GlitchLogo 
                 imageUrl="/img/logos/logo.png"
+                subtitle={t('hero.subtitle')}
               />
             </div>
-            <p className="text-xl md:text-2xl text-secondary font-pixel mb-8">
-              {t('hero.subtitle')}
-            </p>
           </AnimatedSection>
           <AnimatedSection animation="slide-in-up" delay={600} className="space-y-8">
             <div className="mt-12 space-y-4">
