@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import GlitchText from '@/components/GlitchText';
 import AnimatedSection from '@/components/AnimatedSection';
@@ -10,11 +10,83 @@ import { Button } from '@/components/ui/button';
 
 const Index = () => {
   const { t } = useTranslation();
+  const [modalOpen, setModalOpen] = useState(false);
+  const arrowRef = useRef(null);
+  const [arrowPos, setArrowPos] = useState({ x: window.innerWidth / 2, y: window.innerHeight - 60 });
+  const [angle, setAngle] = useState(0);
+  const [arrowColor, setArrowColor] = useState('#A69AE9');
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   
+  useEffect(() => {
+    // Glitch color effect
+    const colors = ['#A69AE9', '#FFEF4C', '#00FFFF', '#FF00FF', '#FF6F61', '#00FF00'];
+    let i = 0;
+    const interval = setInterval(() => {
+      setArrowColor(colors[i % colors.length]);
+      i++;
+    }, 120);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const btn = document.getElementById('join-whitelist-btn');
+      const comingSoon = document.querySelector('span.block.text-xs.text-gray-400.font-pixel.text-center.mt-1');
+      if (!btn) return;
+      const btnRect = btn.getBoundingClientRect();
+      const btnCenter = {
+        x: btnRect.left + btnRect.width / 2,
+        y: btnRect.top + btnRect.height / 2,
+      };
+      // Detect area of coming soon
+      let inComingSoon = false;
+      if (comingSoon) {
+        const csRect = comingSoon.getBoundingClientRect();
+        if (
+          e.clientX >= csRect.left &&
+          e.clientX <= csRect.right &&
+          e.clientY >= csRect.top &&
+          e.clientY <= csRect.bottom
+        ) {
+          inComingSoon = true;
+        }
+      }
+      const dx = btnCenter.x - e.clientX;
+      const dy = btnCenter.y - e.clientY;
+      const theta = Math.atan2(dy, dx) * 180 / Math.PI;
+      setAngle(theta + 270);
+      const distance = 40;
+      const rad = Math.atan2(dy, dx);
+      // Si el ratón está dentro del rectángulo del botón o en coming soon
+      if (
+        (e.clientX >= btnRect.left &&
+        e.clientX <= btnRect.right &&
+        e.clientY >= btnRect.top &&
+        e.clientY <= btnRect.bottom) || inComingSoon
+      ) {
+        // Calcula el punto más cercano en el borde del botón
+        let edgeX = e.clientX;
+        let edgeY = e.clientY;
+        if (e.clientX < btnCenter.x) edgeX = btnRect.left;
+        else if (e.clientX > btnCenter.x) edgeX = btnRect.right;
+        if (e.clientY < btnCenter.y) edgeY = btnRect.top;
+        else if (e.clientY > btnCenter.y) edgeY = btnRect.bottom;
+        setArrowPos({ x: edgeX, y: edgeY });
+      } else {
+        // Coloca la flecha a 'distance' del ratón en dirección al botón
+        setArrowPos({
+          x: e.clientX + Math.cos(rad) * distance,
+          y: e.clientY + Math.sin(rad) * distance,
+        });
+      }
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   const handleClick = () => {
     window.open('https://app.fudfate.xyz/', '_blank');
   };
@@ -41,7 +113,7 @@ const Index = () => {
                 className="text-2xl md:text-3xl font-pixel-2p mb-6"
                 goldEffect
               />
-              <WhitelistForm />
+              <WhitelistForm modalOpen={modalOpen} setModalOpen={setModalOpen} />
             </div>
           </AnimatedSection>
         </div>
@@ -100,6 +172,32 @@ const Index = () => {
           </AnimatedSection>
         </div>
       </section>
+      {/* Flecha flotante global */}
+      {!modalOpen && (
+        <svg
+          ref={arrowRef}
+          style={{
+            position: 'fixed',
+            left: arrowPos.x,
+            top: arrowPos.y,
+            width: 28,
+            height: 28,
+            pointerEvents: 'none',
+            zIndex: 1000,
+            transform: `translate(-50%, -50%) rotate(${angle}deg)`,
+            transition: 'left 0.08s linear, top 0.08s linear, transform 0.08s linear',
+          }}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke={arrowColor}
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M12 2 L12 22" />
+          <path d="M6 16 L12 22 L18 16" />
+        </svg>
+      )}
     </div>
   );
 };

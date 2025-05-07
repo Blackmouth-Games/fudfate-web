@@ -216,6 +216,21 @@
     left: 2px;
     text-shadow: 1px 0 red, -1px 0 blue;
   }
+
+  .scroll-hide-arrow {
+    transition: opacity 0.3s;
+    position: fixed;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    z-index: 30;
+    animation: floating-arrow 2s infinite ease-in-out;
+  }
+
+  .scroll-hide-arrow.hide-on-scroll {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 @keyframes fadeIn {
@@ -338,4 +353,48 @@
   50% {
     box-shadow: 0 -4px 0 0 #000, 0 4px 0 0 #000, -4px 0 0 0 #000, 4px 0 0 0 #000, 0 0 15px rgba(0, 0, 0, 0.7);
   }
+}
+
+@keyframes floating-arrow {
+  0%, 100% {
+    left: 50%;
+  }
+  50% {
+    left: calc(50% + 20px);
+  }
+}
+
+.scroll-hide-arrow span {
+  animation: bounce 1.2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes vibrate {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.vibrate-btn {
+  animation: vibrate 0.3s linear 0s infinite paused;
+}
+
+.vibrate-btn.vibrating {
+  animation-play-state: running;
+}
+
+@keyframes arrow-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }

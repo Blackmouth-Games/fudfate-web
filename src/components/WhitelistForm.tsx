@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -14,11 +14,15 @@ interface WhitelistFormData {
   wallet: string;
 }
 
-const WhitelistForm = () => {
+interface WhitelistFormProps {
+  modalOpen: boolean;
+  setModalOpen: (open: boolean) => void;
+}
+
+const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
   const { publicKey, connected, select, wallets, connect, wallet } = useWallet();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
 
   // Detect wallet connection and trigger join
   React.useEffect(() => {
@@ -27,6 +31,36 @@ const WhitelistForm = () => {
     }
     // eslint-disable-next-line
   }, [connected, publicKey]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const arrow = document.querySelector('.scroll-hide-arrow');
+      if (arrow) {
+        if (window.scrollY > 20) {
+          arrow.classList.add('hide-on-scroll');
+        } else {
+          arrow.classList.remove('hide-on-scroll');
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const btn = document.getElementById('join-whitelist-btn');
+    if (!btn) return;
+    let timeout;
+    const vibrate = () => {
+      btn.classList.add('vibrating');
+      setTimeout(() => {
+        btn.classList.remove('vibrating');
+        timeout = setTimeout(vibrate, 3000);
+      }, 300);
+    };
+    timeout = setTimeout(vibrate, 3000);
+    return () => clearTimeout(timeout);
+  }, []);
 
   const handleJoinWhitelist = async () => {
     setIsSubmitting(true);
@@ -94,12 +128,13 @@ const WhitelistForm = () => {
   return (
     <div className="flex flex-col items-center gap-4 w-full max-w-lg mx-auto">
       <button
-        className="font-pixel text-base px-6 py-3 rounded-md flex items-center justify-center gap-2 border-2 border-black shadow-md bg-[#FFE066] text-black hover:bg-[#00FFFF] hover:text-black transition-all duration-200"
+        id="join-whitelist-btn"
+        className="font-pixel text-base px-6 py-3 rounded-md flex items-center justify-center gap-2 border-2 border-black shadow-md bg-[#FFE066] text-black hover:bg-[#00FFFF] hover:text-black transition-all duration-200 vibrate-btn"
         onClick={() => setModalOpen(true)}
         disabled={isSubmitting}
       >
         <span role="img" aria-label="rocket">🚀</span>
-        Join Whitelist
+        <span className="glitch">Join Whitelist</span>
       </button>
       <span className="block text-xs text-gray-400 font-pixel text-center mt-1">CA: coming soon</span>
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
