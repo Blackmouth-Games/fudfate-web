@@ -41,6 +41,9 @@ const Footer = () => {
               <Link to="https://fudfate.gitbook.io/fudfate" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-accent transition-colors">
                 LitePaper
               </Link>
+              <Link to="https://linktr.ee/fudfate" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-accent transition-colors">
+                Other Links
+              </Link>
             </div>
           </div>
         </div>
