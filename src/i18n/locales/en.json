@@ -64,7 +64,10 @@
     "advertisingCookies": "Advertising Cookies: These cookies are used to make advertising messages more relevant to you. They perform functions like preventing the same ad from continuously reappearing, ensuring that ads are properly displayed, and in some cases selecting advertisements that are based on your interests.",
     "back": "Back to Homepage"
   },
+  "connectWalletToJoin": "Connect your wallet to join the whitelist",
   "whitelist": {
-    "cta": "🚀 ANON, DON'T MISS THE MOON! JOIN THE WHITELIST NOW! 🌙"
+    "cta": "🚀 ANON, DON'T MISS THE MOON! JOIN THE WHITELIST NOW! 🌙",
+    "solflareMobile": "Solflare can only be connected via the in-app browser.",
+    "phantomMobile": "Phantom is only available on desktop browser."
   }
 }

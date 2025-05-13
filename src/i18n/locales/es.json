@@ -64,7 +64,10 @@
     "advertisingCookies": "Cookies de Publicidad: Estas cookies se utilizan para hacer que los mensajes publicitarios sean más relevantes para ti. Realizan funciones como evitar que el mismo anuncio aparezca continuamente, asegurando que los anuncios se muestren correctamente y, en algunos casos, seleccionando anuncios que se basan en tus intereses.",
     "back": "Volver a la Página Principal"
   },
+  "connectWalletToJoin": "Conecta tu wallet para unirte a la whitelist",
   "whitelist": {
-    "cta": "🚀 ANON, ¡NO TE PIERDAS LA LUNA! ¡ÚNETE A LA WHITELIST AHORA! 🌙"
+    "cta": "🚀 ANON, ¡NO TE PIERDAS LA LUNA! ¡ÚNETE A LA WHITELIST AHORA! 🌙",
+    "solflareMobile": "Solflare solo puede conectarse desde el navegador dentro de la app.",
+    "phantomMobile": "Phantom solo está disponible en navegadores de escritorio."
   }
 }

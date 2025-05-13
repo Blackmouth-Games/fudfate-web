@@ -9,6 +9,7 @@ import { PhantomWalletName } from '@solana/wallet-adapter-phantom';
 import { SolflareWalletName } from '@solana/wallet-adapter-solflare';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import type { WalletName } from '@solana/wallet-adapter-base';
+import { useTranslation } from 'react-i18next';
 
 interface WhitelistFormData {
   wallet: string;
@@ -23,6 +24,7 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
   const { publicKey, connected, select, wallets, connect, wallet } = useWallet();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { t } = useTranslation();
 
   // Detect wallet connection and trigger join
   React.useEffect(() => {
@@ -61,6 +63,11 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
     timeout = setTimeout(vibrate, 3000);
     return () => clearTimeout(timeout);
   }, []);
+
+  const isMobile = () => {
+    const ua = navigator.userAgent || navigator.vendor || (window as any).opera;
+    return /android|iphone|ipad|ipod|opera mini|iemobile|wpdesktop|solflare|phantom|metamask|trust/i.test(ua);
+  };
 
   const handleJoinWhitelist = async () => {
     setIsSubmitting(true);
@@ -119,6 +126,18 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
   };
 
   const handleConnect = async (walletName: WalletName) => {
+    if (walletName === PhantomWalletName && isMobile()) {
+      toast({
+        variant: "destructive",
+        title: "Phantom",
+        description: "Only available on desktop browser",
+      });
+      return;
+    }
+    if (walletName === SolflareWalletName && isMobile()) {
+      window.location.href = "solflare://open";
+      return;
+    }
     select(walletName);
     try {
       await connect();
@@ -139,7 +158,7 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
       <span className="block text-xs text-gray-400 font-pixel text-center mt-1">CA: coming soon</span>
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogContent className="fixed z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-8 shadow-lg flex flex-col items-center gap-6 w-[90vw] max-w-md">
-          <h2 className="font-pixel text-2xl mb-2">Connect your wallet</h2>
+          <h2 className="font-pixel text-2xl mb-2 text-center">{t('connectWalletToJoin')}</h2>
           <span className="block text-xs text-gray-500 mb-2 font-pixel text-center">Connect your wallet to join the whitelist</span>
           <button
             className="w-full flex items-center justify-center gap-2 rounded-md py-3 px-6 font-pixel text-lg transition-colors border-2 border-black"
@@ -150,6 +169,9 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
             <img src="/img/images/Phantom-Icon_App_128x128.png" alt="Phantom" className="w-6 h-6" style={{ boxShadow: 'none' }} />
             Connect Phantom
           </button>
+          <span className="block text-xs text-gray-500 font-pixel text-center mb-2 italic">
+            {t('whitelist.phantomMobile')}
+          </span>
           <button
             className="w-full flex items-center justify-center gap-2 rounded-md py-3 px-6 font-pixel text-lg transition-colors border-2 border-black"
             style={{ backgroundColor: '#FFEF4C', color: 'black' }}
@@ -159,13 +181,9 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
             <img src="/img/images/Solflare_id5j73wBTF_0.png" alt="Solflare" className="w-6 h-6" style={{ boxShadow: 'none' }} />
             Connect Solflare
           </button>
-          <button
-            className="mt-2 text-gray-500 underline text-sm"
-            onClick={() => setModalOpen(false)}
-            disabled={isSubmitting}
-          >
-            Cancel
-          </button>
+          <span className="block text-xs text-gray-500 font-pixel text-center mb-2 italic">
+            {t('whitelist.solflareMobile')}
+          </span>
         </DialogContent>
       </Dialog>
     </div>

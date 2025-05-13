@@ -19,6 +19,7 @@ import CookiesPolicy from "./pages/CookiesPolicy";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
+import NewsBar from "@/components/NewsBar";
 
 // Import i18n
 import "./i18n";
@@ -45,7 +46,8 @@ const App = () => {
           <WalletModalProvider>
             <BrowserRouter>
               <TooltipProvider>
-                <div className="flex flex-col min-h-screen bg-white">
+                <div className="flex flex-col min-h-screen bg-white pt-[48px]">
+                  <NewsBar />
                   <Navbar />
                   <main className="flex-grow">
                     <Routes>
