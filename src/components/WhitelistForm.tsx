@@ -159,7 +159,6 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogContent className="fixed z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-8 shadow-lg flex flex-col items-center gap-6 w-[90vw] max-w-md">
           <h2 className="font-pixel text-2xl mb-2 text-center">{t('connectWalletToJoin')}</h2>
-          <span className="block text-xs text-gray-500 mb-2 font-pixel text-center">Connect your wallet to join the whitelist</span>
           <button
             className="w-full flex items-center justify-center gap-2 rounded-md py-3 px-6 font-pixel text-lg transition-colors border-2 border-black"
             style={{ backgroundColor: '#A69AE9', color: 'white' }}

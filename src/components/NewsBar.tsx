@@ -72,33 +72,47 @@ const NewsBar: React.FC = () => {
         boxShadow: '0 2px 16px 0 #ff00cc80',
         borderBottom: '2px solid #fff3',
       }}>
-        {/* Ticker */}
-        <div className="overflow-hidden flex-1 min-w-0 relative" style={{height: '32px'}}>
-          <div className="ticker-outer">
-            <div
-              className="ticker-inner"
-              key={key}
-              ref={tickerInnerRef}
-              onAnimationIteration={handleAnimationIteration}
-              style={{
-                animationDuration: `${ANIMATION_DURATION}s`,
-              }}
-            >
-              {currentPhrase + SEPARATOR + nextPhrase + SEPARATOR + currentPhrase + SEPARATOR + nextPhrase + SEPARATOR}
+        <div className="newsbar-inner">
+          {/* Ticker */}
+          <div className="overflow-hidden flex-1 min-w-0 relative" style={{height: '32px'}}>
+            <div className="ticker-outer">
+              <div
+                className="ticker-inner"
+                key={key}
+                ref={tickerInnerRef}
+                onAnimationIteration={handleAnimationIteration}
+                style={{
+                  animationDuration: `${ANIMATION_DURATION}s`,
+                }}
+              >
+                {currentPhrase + SEPARATOR + nextPhrase + SEPARATOR + currentPhrase + SEPARATOR + nextPhrase + SEPARATOR}
+              </div>
             </div>
           </div>
+          {/* Countdown (desktop) */}
+          <div className="countdown-desktop">
+            {`${pad(timeLeft.days)}d ${pad(timeLeft.hours)}h ${pad(timeLeft.minutes)}m ${pad(timeLeft.seconds)}s`}
+          </div>
         </div>
-        {/* Countdown */}
-        <div className="ml-4 flex-shrink-0 font-mono text-base md:text-lg px-3 py-1 rounded-lg bg-black/60 text-pink-300 border border-pink-400 shadow neon-glow">
+        {/* Countdown (mobile, fuera del flex) */}
+        <div className="countdown-mobile-fixed">
           {`${pad(timeLeft.days)}d ${pad(timeLeft.hours)}h ${pad(timeLeft.minutes)}m ${pad(timeLeft.seconds)}s`}
         </div>
       </div>
-      {/* Animaciones CSS */}
+      {/* Animaciones CSS y responsive */}
       <style>{`
         @keyframes vaporwave-bg {
           0% {background-position:0% 50%}
           50% {background-position:100% 50%}
           100% {background-position:0% 50%}
+        }
+        .newsbar-inner {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          height: 100%;
+          padding: 0 1rem;
         }
         .ticker-outer {
           width: 100%;
@@ -115,12 +129,54 @@ const NewsBar: React.FC = () => {
           color: #fff;
           text-shadow: 0 0 6px #fff, 0 0 12px #ff00cc, 0 0 24px #00fff0;
         }
+        .countdown-desktop {
+          margin-left: 16px;
+          flex-shrink: 0;
+          font-family: monospace;
+          font-size: 18px;
+          padding: 4px 12px;
+          border-radius: 8px;
+          background: rgba(0,0,0,0.6);
+          color: #ffb3ec;
+          border: 1px solid #ffb3ec;
+          box-shadow: 0 0 8px #ff00cc80;
+          text-shadow: 0 0 6px #fff, 0 0 12px #ff00cc, 0 0 24px #00fff0;
+          display: block;
+        }
+        .countdown-mobile-fixed {
+          display: none;
+        }
+        @media (max-width: 640px) {
+          .newsbar-inner {
+            flex-direction: column;
+            align-items: stretch;
+            padding: 0 0.5rem;
+            height: auto;
+          }
+          .countdown-desktop {
+            display: none;
+          }
+          .countdown-mobile-fixed {
+            display: block;
+            margin: 6px auto 0 auto;
+            font-size: 16px;
+            font-family: monospace;
+            padding: 4px 14px;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.85);
+            color: #ffb3ec;
+            border: 1px solid #ffb3ec;
+            box-shadow: 0 0 8px #ff00cc80;
+            text-align: center;
+            width: fit-content;
+            text-shadow: 0 0 6px #fff, 0 0 12px #ff00cc, 0 0 24px #00fff0;
+            position: relative;
+            z-index: 100;
+          }
+        }
         @keyframes ticker-move {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
-        }
-        .neon-glow {
-          text-shadow: 0 0 6px #fff, 0 0 12px #ff00cc, 0 0 24px #00fff0;
         }
       `}</style>
     </div>
