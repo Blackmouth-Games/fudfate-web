@@ -77,5 +77,14 @@
     "warningPhantomInSolflareDesc": "You are in the Solflare DApp. You should only connect the Solflare wallet to avoid errors.",
     "warningSolflareInPhantomTitle": "Warning",
     "warningSolflareInPhantomDesc": "You are in the Phantom DApp. You should only connect the Phantom wallet to avoid errors."
-  }
+  },
+  "solflareProviderNotFound": "Solflare provider not detected. Install the extension or use the app.",
+  "solflareNoAddress": "Could not get Solflare public address.",
+  "solflareRejected": "User rejected the connection.",
+  "solflareUnknownError": "Unknown error connecting to Solflare.",
+  "solflareConnectErrorTitle": "Solflare Connection Error",
+  "successTitle": "Success! 🎉",
+  "successDesc": "You are now on the whitelist!",
+  "errorTitle": "Error",
+  "errorDesc": "Failed to join the whitelist. Please try again."
 }

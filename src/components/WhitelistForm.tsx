@@ -10,6 +10,7 @@ import { SolflareWalletName } from '@solana/wallet-adapter-solflare';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import type { WalletName } from '@solana/wallet-adapter-base';
 import { useTranslation } from 'react-i18next';
+import { connectSolflare } from '@/utils/wallet-connection-utils';
 
 interface WhitelistFormData {
   wallet: string;
@@ -185,10 +186,21 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
         });
         return;
       }
-      select(walletName);
+      // Usar connectSolflare para la conexión manual
+      setIsSubmitting(true);
       try {
-        await connect();
-      } catch {}
+        const publicKey = await connectSolflare(t);
+        // Simular el flujo de whitelist igual que Phantom
+        await handleJoinWhitelistWithAddress(publicKey);
+      } catch (error) {
+        toast({
+          variant: "destructive",
+          title: t('whitelist.solflareConnectErrorTitle', 'Error al conectar Solflare'),
+          description: error.message,
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
       return;
     }
     // Si el usuario está en el navegador de la DApp de Phantom
@@ -218,10 +230,64 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
       return;
     }
     // Desktop o navegador compatible (web normal)
+    if (walletName === SolflareWalletName) {
+      setIsSubmitting(true);
+      try {
+        const publicKey = await connectSolflare(t);
+        await handleJoinWhitelistWithAddress(publicKey);
+      } catch (error) {
+        toast({
+          variant: "destructive",
+          title: t('whitelist.solflareConnectErrorTitle', 'Error al conectar Solflare'),
+          description: error.message,
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
+      return;
+    }
     select(walletName);
     try {
       await connect();
     } catch {}
+  };
+
+  // Nuevo flujo para whitelist usando address manual (Solflare)
+  const handleJoinWhitelistWithAddress = async (address: string) => {
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('https://primary-production-fe05.up.railway.app/webhook/ae4eccb6-2001-44ad-b373-c9fe1ef3949e', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ wallet: address }),
+      });
+      const result = await response.json();
+      const isSuccess = result.success === true || (Array.isArray(result) && result[0]?.success === true);
+      if (isSuccess) {
+        toast({
+          title: t('whitelist.successTitle', '¡Éxito! 🎉'),
+          description: t('whitelist.successDesc', '¡Ya estás en la whitelist!'),
+        });
+        setModalOpen(false);
+        window.location.href = 'https://app.fudfate.xyz/congrats';
+      } else {
+        toast({
+          variant: "destructive",
+          title: t('whitelist.errorTitle', 'Error'),
+          description: t('whitelist.errorDesc', 'No se pudo unir a la whitelist. Intenta de nuevo.'),
+        });
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: t('whitelist.errorTitle', 'Error'),
+        description: t('whitelist.errorDesc', 'Algo salió mal. Intenta de nuevo.'),
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
