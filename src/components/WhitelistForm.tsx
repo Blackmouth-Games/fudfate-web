@@ -71,8 +71,15 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
 
   // Detecta si el usuario está en el navegador de la DApp de Solflare
   const isSolflareDappBrowser = () => {
-    const ua = navigator.userAgent || '';
-    return ua.toLowerCase().includes('solflare');
+    const ua = (navigator.userAgent || '').toLowerCase();
+    // Patrones comunes de navegadores in-app de Solflare
+    return (
+      ua.includes('solflare') ||
+      ua.includes('solflarewallet') ||
+      ua.includes('inapp') ||
+      ua.includes('solflareapp') ||
+      /solflare[\s\-]?browser/.test(ua)
+    );
   };
 
   // Detecta si el usuario está en el navegador de la DApp de Phantom
@@ -173,8 +180,8 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
       if (walletName !== SolflareWalletName) {
         toast({
           variant: "destructive",
-          title: "Solo Solflare",
-          description: "Desde el navegador de la DApp de Solflare solo puedes conectar la wallet de Solflare.",
+          title: t('whitelist.onlySolflareTitle', 'Solo Solflare'),
+          description: t('whitelist.onlySolflareDesc', 'Desde el navegador de la DApp de Solflare solo puedes conectar la wallet de Solflare.'),
         });
         return;
       }
@@ -189,8 +196,8 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
       if (walletName !== PhantomWalletName) {
         toast({
           variant: "destructive",
-          title: "Solo Phantom",
-          description: "Desde el navegador de la DApp de Phantom solo puedes conectar la wallet de Phantom.",
+          title: t('whitelist.onlyPhantomTitle', 'Solo Phantom'),
+          description: t('whitelist.onlyPhantomDesc', 'Desde el navegador de la DApp de Phantom solo puedes conectar la wallet de Phantom.'),
         });
         return;
       }

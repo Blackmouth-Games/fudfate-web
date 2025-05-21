@@ -68,6 +68,10 @@
   "whitelist": {
     "cta": "🚀 ANON, DON'T MISS THE MOON! JOIN THE WHITELIST NOW! 🌙",
     "solflareMobile": "Solflare can only be connected via the in-app browser.",
-    "phantomMobile": "Phantom is only available on desktop browser."
+    "phantomMobile": "Phantom can only be connected via the in-app browser.",
+    "onlySolflareTitle": "Solflare Only",
+    "onlySolflareDesc": "From the Solflare DApp browser you can only connect the Solflare wallet.",
+    "onlyPhantomTitle": "Phantom Only",
+    "onlyPhantomDesc": "From the Phantom DApp browser you can only connect the Phantom wallet."
   }
 }

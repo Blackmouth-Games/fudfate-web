@@ -68,6 +68,10 @@
   "whitelist": {
     "cta": "🚀 ANON, ¡NO TE PIERDAS LA LUNA! ¡ÚNETE A LA WHITELIST AHORA! 🌙",
     "solflareMobile": "Solflare solo puede conectarse desde el navegador dentro de la app.",
-    "phantomMobile": "Phantom solo está disponible en navegadores de escritorio."
+    "phantomMobile": "Phantom solo está disponible en navegadores de escritorio.",
+    "onlySolflareTitle": "Solo Solflare",
+    "onlySolflareDesc": "Desde el navegador de la DApp de Solflare solo puedes conectar la wallet de Solflare.",
+    "onlyPhantomTitle": "Solo Phantom",
+    "onlyPhantomDesc": "Desde el navegador de la DApp de Phantom solo puedes conectar la wallet de Phantom."
   }
 }
