@@ -92,5 +92,7 @@
   "phantomNoAddress": "Could not get Phantom public address.",
   "phantomRejected": "User rejected the connection.",
   "phantomConnectErrorTitle": "Phantom Connection Error",
-  "solflareReload": "If you returned from the app, reload the page to try connecting."
+  "solflareReload": "If you returned from the app, reload the page to try connecting.",
+  "loading": "Connecting...",
+  "joinWhitelist": "Join Whitelist"
 }

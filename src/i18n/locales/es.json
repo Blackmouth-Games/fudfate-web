@@ -92,5 +92,7 @@
     "phantomRejected": "El usuario rechazó la conexión.",
     "phantomConnectErrorTitle": "Error al conectar Phantom",
     "solflareReload": "Si has vuelto desde la app, recarga la página para intentar conectar."
-  }
+  },
+  "loading": "Conectando...",
+  "joinWhitelist": "Unirse a la Whitelist"
 }

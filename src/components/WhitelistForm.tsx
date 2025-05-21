@@ -408,7 +408,13 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
         disabled={isSubmitting}
       >
         <span role="img" aria-label="rocket">🚀</span>
-        <span className="glitch">Join Whitelist</span>
+        <span className="glitch">{isSubmitting ? t('whitelist.loading', 'Conectando...') : t('whitelist.joinWhitelist', 'Join Whitelist')}</span>
+        {isSubmitting && (
+          <svg className="animate-spin ml-2 h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+          </svg>
+        )}
       </button>
       <span className="block text-xs text-gray-400 font-pixel text-center mt-1">CA: coming soon</span>
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
@@ -421,7 +427,13 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
             disabled={isSubmitting}
           >
             <img src="/img/images/Phantom-Icon_App_128x128.png" alt="Phantom" className="w-6 h-6" style={{ boxShadow: 'none' }} />
-            Connect Phantom
+            {isSubmitting ? t('whitelist.loading', 'Conectando...') : 'Connect Phantom'}
+            {isSubmitting && (
+              <svg className="animate-spin ml-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+              </svg>
+            )}
           </button>
           <span className="block text-xs text-gray-500 font-pixel text-center mb-2 italic">
             {t('whitelist.phantomMobile')}
@@ -433,7 +445,13 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
             disabled={isSubmitting}
           >
             <img src="/img/images/Solflare_id5j73wBTF_0.png" alt="Solflare" className="w-6 h-6" style={{ boxShadow: 'none' }} />
-            Connect Solflare
+            {isSubmitting ? t('whitelist.loading', 'Conectando...') : 'Connect Solflare'}
+            {isSubmitting && (
+              <svg className="animate-spin ml-2 h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+              </svg>
+            )}
           </button>
           <span className="block text-xs text-gray-500 font-pixel text-center mb-2 italic">
             {t('whitelist.solflareMobile')}
