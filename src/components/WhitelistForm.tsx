@@ -69,6 +69,48 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
     return /android|iphone|ipad|ipod|opera mini|iemobile|wpdesktop|solflare|phantom|metamask|trust/i.test(ua);
   };
 
+  // Detecta si el usuario está en el navegador de la DApp de Solflare
+  const isSolflareDappBrowser = () => {
+    const ua = navigator.userAgent || '';
+    return ua.toLowerCase().includes('solflare');
+  };
+
+  // Detecta si el usuario está en el navegador de la DApp de Phantom
+  const isPhantomDappBrowser = () => {
+    const ua = navigator.userAgent || '';
+    return ua.toLowerCase().includes('phantom');
+  };
+
+  // Intenta abrir la app Solflare o redirige a la tienda si no está instalada
+  const openSolflareAppOrStore = () => {
+    const now = Date.now();
+    window.location.href = 'solflare://open';
+    setTimeout(() => {
+      if (Date.now() - now < 2000) {
+        if (/android/i.test(navigator.userAgent)) {
+          window.location.href = 'https://play.google.com/store/apps/details?id=com.solflare.mobile';
+        } else {
+          window.location.href = 'https://apps.apple.com/app/solflare/id1580902717';
+        }
+      }
+    }, 1500);
+  };
+
+  // Intenta abrir la app Phantom o redirige a la tienda si no está instalada
+  const openPhantomAppOrStore = () => {
+    const now = Date.now();
+    window.location.href = 'phantom://open';
+    setTimeout(() => {
+      if (Date.now() - now < 2000) {
+        if (/android/i.test(navigator.userAgent)) {
+          window.location.href = 'https://play.google.com/store/apps/details?id=app.phantom';
+        } else {
+          window.location.href = 'https://apps.apple.com/app/phantom-solana-wallet/id1598432977';
+        }
+      }
+    }, 1500);
+  };
+
   const handleJoinWhitelist = async () => {
     setIsSubmitting(true);
     try {
@@ -126,18 +168,49 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
   };
 
   const handleConnect = async (walletName: WalletName) => {
+    // Si el usuario está en el navegador de la DApp de Solflare
+    if (isSolflareDappBrowser()) {
+      if (walletName !== SolflareWalletName) {
+        toast({
+          variant: "destructive",
+          title: "Solo Solflare",
+          description: "Desde el navegador de la DApp de Solflare solo puedes conectar la wallet de Solflare.",
+        });
+        return;
+      }
+      select(walletName);
+      try {
+        await connect();
+      } catch {}
+      return;
+    }
+    // Si el usuario está en el navegador de la DApp de Phantom
+    if (isPhantomDappBrowser()) {
+      if (walletName !== PhantomWalletName) {
+        toast({
+          variant: "destructive",
+          title: "Solo Phantom",
+          description: "Desde el navegador de la DApp de Phantom solo puedes conectar la wallet de Phantom.",
+        });
+        return;
+      }
+      select(walletName);
+      try {
+        await connect();
+      } catch {}
+      return;
+    }
+    // Si está en móvil y selecciona Phantom
     if (walletName === PhantomWalletName && isMobile()) {
-      toast({
-        variant: "destructive",
-        title: "Phantom",
-        description: "Only available on desktop browser",
-      });
+      openPhantomAppOrStore();
       return;
     }
+    // Si está en móvil y selecciona Solflare
     if (walletName === SolflareWalletName && isMobile()) {
-      window.location.href = "solflare://open";
+      openSolflareAppOrStore();
       return;
     }
+    // Desktop o navegador compatible
     select(walletName);
     try {
       await connect();
