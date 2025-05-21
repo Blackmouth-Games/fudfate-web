@@ -86,5 +86,11 @@
   "successTitle": "Success! 🎉",
   "successDesc": "You are now on the whitelist!",
   "errorTitle": "Error",
-  "errorDesc": "Failed to join the whitelist. Please try again."
+  "errorDesc": "Failed to join the whitelist. Please try again.",
+  "phantomProviderNotFound": "Phantom provider not detected. Use the app or install the extension.",
+  "phantomReload": "If you returned from the app, reload the page to try connecting.",
+  "phantomNoAddress": "Could not get Phantom public address.",
+  "phantomRejected": "User rejected the connection.",
+  "phantomConnectErrorTitle": "Phantom Connection Error",
+  "solflareReload": "If you returned from the app, reload the page to try connecting."
 }

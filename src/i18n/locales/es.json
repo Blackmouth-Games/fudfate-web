@@ -85,6 +85,12 @@
     "successTitle": "¡Éxito! 🎉",
     "successDesc": "¡Ya estás en la whitelist!",
     "errorTitle": "Error",
-    "errorDesc": "No se pudo unir a la whitelist. Intenta de nuevo."
+    "errorDesc": "No se pudo unir a la whitelist. Intenta de nuevo.",
+    "phantomProviderNotFound": "No se detecta el proveedor de Phantom. Usa la app o instala la extensión.",
+    "phantomReload": "Si has vuelto desde la app, recarga la página para intentar conectar.",
+    "phantomNoAddress": "No se pudo obtener la dirección pública de Phantom.",
+    "phantomRejected": "El usuario rechazó la conexión.",
+    "phantomConnectErrorTitle": "Error al conectar Phantom",
+    "solflareReload": "Si has vuelto desde la app, recarga la página para intentar conectar."
   }
 }

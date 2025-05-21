@@ -119,6 +119,19 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
     }, 1500);
   };
 
+  // Utilidad para detectar proveedor Phantom
+  const getPhantomProvider = () => {
+    if (window.solana && window.solana.isPhantom) return window.solana;
+    return null;
+  };
+
+  // Utilidad para detectar proveedor Solflare
+  const getSolflareProvider = () => {
+    if (window.solflare) return window.solflare;
+    if (window.solana && window.solana.isSolflare) return window.solana;
+    return null;
+  };
+
   const handleJoinWhitelist = async () => {
     setIsSubmitting(true);
     try {
@@ -186,11 +199,19 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
         });
         return;
       }
-      // Usar connectSolflare para la conexión manual
       setIsSubmitting(true);
       try {
+        const provider = getSolflareProvider();
+        if (!provider) {
+          toast({
+            variant: "destructive",
+            title: t('whitelist.solflareProviderNotFound', 'No se detecta el proveedor de Solflare.'),
+            description: t('whitelist.solflareReload', 'Si has vuelto desde la app, recarga la página para intentar conectar.'),
+          });
+          setIsSubmitting(false);
+          return;
+        }
         const publicKey = await connectSolflare(t);
-        // Simular el flujo de whitelist igual que Phantom
         await handleJoinWhitelistWithAddress(publicKey);
       } catch (error) {
         toast({
@@ -213,26 +234,72 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
         });
         return;
       }
-      select(walletName);
+      setIsSubmitting(true);
       try {
-        await connect();
-      } catch {}
+        const provider = getPhantomProvider();
+        if (!provider) {
+          toast({
+            variant: "destructive",
+            title: t('whitelist.phantomProviderNotFound', 'No se detecta el proveedor de Phantom.'),
+            description: t('whitelist.phantomReload', 'Si has vuelto desde la app, recarga la página para intentar conectar.'),
+          });
+          setIsSubmitting(false);
+          return;
+        }
+        await provider.connect();
+        if (!provider.publicKey) {
+          toast({
+            variant: "destructive",
+            title: t('whitelist.phantomNoAddress', 'No se pudo obtener la dirección pública de Phantom.'),
+          });
+          setIsSubmitting(false);
+          return;
+        }
+        await handleJoinWhitelistWithAddress(provider.publicKey.toString());
+      } catch (error) {
+        if (error && error.code === 4001) {
+          toast({
+            variant: "destructive",
+            title: t('whitelist.phantomRejected', 'El usuario rechazó la conexión.'),
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: t('whitelist.phantomConnectErrorTitle', 'Error al conectar Phantom'),
+            description: error.message,
+          });
+        }
+      } finally {
+        setIsSubmitting(false);
+      }
       return;
     }
     // Si está en móvil y selecciona Phantom
     if (walletName === PhantomWalletName && isMobile()) {
       openPhantomAppOrStore();
+      // Esperar a que el usuario vuelva y reintente
       return;
     }
     // Si está en móvil y selecciona Solflare
     if (walletName === SolflareWalletName && isMobile()) {
       openSolflareAppOrStore();
+      // Esperar a que el usuario vuelva y reintente
       return;
     }
     // Desktop o navegador compatible (web normal)
     if (walletName === SolflareWalletName) {
       setIsSubmitting(true);
       try {
+        const provider = getSolflareProvider();
+        if (!provider) {
+          toast({
+            variant: "destructive",
+            title: t('whitelist.solflareProviderNotFound', 'No se detecta el proveedor de Solflare.'),
+            description: t('whitelist.solflareReload', 'Si has vuelto desde la app, recarga la página para intentar conectar.'),
+          });
+          setIsSubmitting(false);
+          return;
+        }
         const publicKey = await connectSolflare(t);
         await handleJoinWhitelistWithAddress(publicKey);
       } catch (error) {
@@ -246,6 +313,48 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
       }
       return;
     }
+    if (walletName === PhantomWalletName) {
+      setIsSubmitting(true);
+      try {
+        const provider = getPhantomProvider();
+        if (!provider) {
+          toast({
+            variant: "destructive",
+            title: t('whitelist.phantomProviderNotFound', 'No se detecta el proveedor de Phantom.'),
+            description: t('whitelist.phantomReload', 'Si has vuelto desde la app, recarga la página para intentar conectar.'),
+          });
+          setIsSubmitting(false);
+          return;
+        }
+        await provider.connect();
+        if (!provider.publicKey) {
+          toast({
+            variant: "destructive",
+            title: t('whitelist.phantomNoAddress', 'No se pudo obtener la dirección pública de Phantom.'),
+          });
+          setIsSubmitting(false);
+          return;
+        }
+        await handleJoinWhitelistWithAddress(provider.publicKey.toString());
+      } catch (error) {
+        if (error && error.code === 4001) {
+          toast({
+            variant: "destructive",
+            title: t('whitelist.phantomRejected', 'El usuario rechazó la conexión.'),
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: t('whitelist.phantomConnectErrorTitle', 'Error al conectar Phantom'),
+            description: error.message,
+          });
+        }
+      } finally {
+        setIsSubmitting(false);
+      }
+      return;
+    }
+    // Fallback
     select(walletName);
     try {
       await connect();
