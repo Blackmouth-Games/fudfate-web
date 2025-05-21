@@ -179,9 +179,9 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
     if (isSolflareDappBrowser()) {
       if (walletName !== SolflareWalletName) {
         toast({
-          variant: "destructive",
-          title: t('whitelist.onlySolflareTitle', 'Solo Solflare'),
-          description: t('whitelist.onlySolflareDesc', 'Desde el navegador de la DApp de Solflare solo puedes conectar la wallet de Solflare.'),
+          variant: "default",
+          title: t('whitelist.warningPhantomInSolflareTitle', 'Advertencia'),
+          description: t('whitelist.warningPhantomInSolflareDesc', 'Estás en la DApp de Solflare. Solo deberías conectar la wallet de Solflare para evitar errores.'),
         });
         return;
       }
@@ -195,9 +195,9 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
     if (isPhantomDappBrowser()) {
       if (walletName !== PhantomWalletName) {
         toast({
-          variant: "destructive",
-          title: t('whitelist.onlyPhantomTitle', 'Solo Phantom'),
-          description: t('whitelist.onlyPhantomDesc', 'Desde el navegador de la DApp de Phantom solo puedes conectar la wallet de Phantom.'),
+          variant: "default",
+          title: t('whitelist.warningSolflareInPhantomTitle', 'Warning'),
+          description: t('whitelist.warningSolflareInPhantomDesc', 'You are in the Phantom DApp. You should only connect the Phantom wallet to avoid errors.'),
         });
         return;
       }
@@ -217,7 +217,7 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
       openSolflareAppOrStore();
       return;
     }
-    // Desktop o navegador compatible
+    // Desktop o navegador compatible (web normal)
     select(walletName);
     try {
       await connect();

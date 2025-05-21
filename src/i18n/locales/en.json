@@ -72,6 +72,10 @@
     "onlySolflareTitle": "Solflare Only",
     "onlySolflareDesc": "From the Solflare DApp browser you can only connect the Solflare wallet.",
     "onlyPhantomTitle": "Phantom Only",
-    "onlyPhantomDesc": "From the Phantom DApp browser you can only connect the Phantom wallet."
+    "onlyPhantomDesc": "From the Phantom DApp browser you can only connect the Phantom wallet.",
+    "warningPhantomInSolflareTitle": "Warning",
+    "warningPhantomInSolflareDesc": "You are in the Solflare DApp. You should only connect the Solflare wallet to avoid errors.",
+    "warningSolflareInPhantomTitle": "Warning",
+    "warningSolflareInPhantomDesc": "You are in the Phantom DApp. You should only connect the Phantom wallet to avoid errors."
   }
 }
