@@ -94,5 +94,7 @@
   "phantomConnectErrorTitle": "Phantom Connection Error",
   "solflareReload": "If you returned from the app, reload the page to try connecting.",
   "loading": "Connecting...",
-  "joinWhitelist": "Join Whitelist"
+  "joinWhitelist": "Join Whitelist",
+  "connectPhantom": "Connect Phantom",
+  "connectSolflare": "Connect Solflare"
 }

@@ -94,5 +94,7 @@
     "solflareReload": "Si has vuelto desde la app, recarga la página para intentar conectar."
   },
   "loading": "Conectando...",
-  "joinWhitelist": "Unirse a la Whitelist"
+  "joinWhitelist": "Unirse a la Whitelist",
+  "connectPhantom": "Conectar Phantom",
+  "connectSolflare": "Conectar Solflare"
 }
