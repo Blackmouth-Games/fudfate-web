@@ -26,10 +26,11 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { t } = useTranslation();
+  const [hasJoinedWhitelist, setHasJoinedWhitelist] = useState(false);
 
   // Detect wallet connection and trigger join
   React.useEffect(() => {
-    if (connected && publicKey && modalOpen) {
+    if (connected && publicKey && modalOpen && !hasJoinedWhitelist) {
       handleJoinWhitelist();
     }
     // eslint-disable-next-line
@@ -133,6 +134,8 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
   };
 
   const handleJoinWhitelist = async () => {
+    if (hasJoinedWhitelist) return;
+    setHasJoinedWhitelist(true);
     setIsSubmitting(true);
     try {
       // Si es Phantom, intenta firmar un mensaje antes de enviar el webhook
@@ -366,6 +369,8 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
 
   // Nuevo flujo para whitelist usando address manual (Solflare)
   const handleJoinWhitelistWithAddress = async (address: string) => {
+    if (hasJoinedWhitelist) return;
+    setHasJoinedWhitelist(true);
     setIsSubmitting(true);
     try {
       const response = await fetch('https://primary-production-fe05.up.railway.app/webhook/ae4eccb6-2001-44ad-b373-c9fe1ef3949e', {
@@ -404,6 +409,13 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
       setIsSubmitting(false);
     }
   };
+
+  // Cuando se cierra el modal, resetea el estado para permitir un nuevo intento si es necesario
+  useEffect(() => {
+    if (!modalOpen) {
+      setHasJoinedWhitelist(false);
+    }
+  }, [modalOpen]);
 
   return (
     <div className="flex flex-col items-center gap-4 w-full max-w-lg mx-auto">
