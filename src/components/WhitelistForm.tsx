@@ -159,7 +159,10 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ wallet: publicKey.toBase58() }),
+        body: JSON.stringify({ 
+          wallet: publicKey.toBase58(),
+          wallet_type: wallet?.adapter?.name === PhantomWalletName ? 'phantom' : 'solflare'
+        }),
       });
       const result = await response.json();
       const isSuccess = result.success === true || (Array.isArray(result) && result[0]?.success === true);
@@ -370,7 +373,10 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ wallet: address }),
+        body: JSON.stringify({ 
+          wallet: address,
+          wallet_type: wallet?.adapter?.name === PhantomWalletName ? 'phantom' : 'solflare'
+        }),
       });
       const result = await response.json();
       const isSuccess = result.success === true || (Array.isArray(result) && result[0]?.success === true);
