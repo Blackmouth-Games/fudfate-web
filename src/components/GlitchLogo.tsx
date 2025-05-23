@@ -34,7 +34,7 @@ const GlitchLogo = ({ imageUrl, subtitle }: GlitchLogoProps) => {
             <div className="flex justify-center gap-4 mt-6">
                 {/* X (Twitter) Button */}
                 <a
-                    href="https://x.com"
+                    href="https://x.com/FDFT_tarot"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="FudFate on X"
