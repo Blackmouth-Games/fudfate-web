@@ -30,7 +30,7 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
 
   // Detect wallet connection and trigger join
   React.useEffect(() => {
-    if (connected && publicKey && modalOpen && !hasJoinedWhitelist) {
+    if (connected && publicKey && modalOpen && !hasJoinedWhitelist && !isSubmitting) {
       handleJoinWhitelist();
     }
     // eslint-disable-next-line
