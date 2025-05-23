@@ -171,16 +171,16 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
       const isSuccess = result.success === true || (Array.isArray(result) && result[0]?.success === true);
       if (isSuccess) {
         toast({
-          title: "Success! 🎉",
-          description: "You're now on the whitelist!",
+          title: t('whitelist.successTitle', 'Success! 🎉'),
+          description: t('whitelist.successDesc', 'You are now on the whitelist!'),
         });
         setModalOpen(false);
         window.location.href = 'https://app.fudfate.xyz/congrats';
       } else {
         toast({
           variant: "destructive",
-          title: "Error",
-          description: "Failed to join whitelist. Please try again.",
+          title: t('whitelist.errorTitle', 'Error'),
+          description: t('whitelist.errorDesc', 'Failed to join whitelist. Please try again.'),
         });
       }
     } catch (error) {
