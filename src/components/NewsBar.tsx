@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 
 // Fecha de prueba: 1 hora en el futuro desde ahora
 function getTargetDate() {
-  // 4 de junio de 2025, 17:00 hora de Madrid (UTC+2) = 15:00 UTC
-  return new Date(Date.UTC(2025, 5, 4, 15, 0, 0));
+  // 6 de julio de 2025, 17:00 hora de Madrid (UTC+2) = 15:00 UTC
+  return new Date(Date.UTC(2025, 6, 6, 15, 0, 0));
 }
 
 function getTimeLeft(target) {
@@ -18,10 +18,10 @@ function getTimeLeft(target) {
 }
 
 const TICKER_PHRASES = [
-  '🚀 $FDft set to moon — June 4th. Apes together strong. ⏳',
-  '🐳 $FDft whales are loading bags — Launch drops June 4th. Get in or cry later. 📈',
-  '🔥 Fueling the rocket... $FDft launch on June 4th — WAGMI 🛸',
-  '⛽ Full send activated: $FDft ignites on June 4th. NGMI if you miss it. 🧨',
+  '🚀 $FDft set to moon — July 6th. Apes together strong. ⏳',
+  '🐳 $FDft whales are loading bags — Launch drops July 6th. Get in or cry later. 📈',
+  '🔥 Fueling the rocket... $FDft launch on July 6th — WAGMI 🛸',
+  '⛽ Full send activated: $FDft ignites on July 6th. NGMI if you miss it. 🧨',
 ];
 
 const SEPARATOR = '        ';
