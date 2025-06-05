@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // Fecha de prueba: 1 hora en el futuro desde ahora
 function getTargetDate() {
@@ -17,26 +18,21 @@ function getTimeLeft(target) {
   return { days, hours, minutes, seconds };
 }
 
-const TICKER_PHRASES = [
-  '🚀 $FDft set to moon — June 6th. Apes together strong. ⏳',
-  '🐳 $FDft whales are loading bags — Launch drops June 6th. Get in or cry later. 📈',
-  '🔥 Fueling the rocket... $FDft launch on June 6th — WAGMI 🛸',
-  '⛽ Full send activated: $FDft ignites on June 6th. NGMI if you miss it. 🧨',
-];
-
 const SEPARATOR = '        ';
 const ANIMATION_DURATION = 18; // segundos
 
 const NewsBar: React.FC = () => {
+  const { t } = useTranslation();
+  const tickerPhrases = t('ticker', { returnObjects: true }) as string[];
   const [targetDate] = useState(getTargetDate());
   const [timeLeft, setTimeLeft] = useState(getTimeLeft(targetDate));
-  const [currentPhrase, setCurrentPhrase] = useState(() => TICKER_PHRASES[Math.floor(Math.random() * TICKER_PHRASES.length)]);
+  const [currentPhrase, setCurrentPhrase] = useState(() => tickerPhrases[Math.floor(Math.random() * tickerPhrases.length)]);
   const [nextPhrase, setNextPhrase] = useState(() => {
     let idx;
     do {
-      idx = Math.floor(Math.random() * TICKER_PHRASES.length);
-    } while (TICKER_PHRASES[idx] === currentPhrase);
-    return TICKER_PHRASES[idx];
+      idx = Math.floor(Math.random() * tickerPhrases.length);
+    } while (tickerPhrases[idx] === currentPhrase);
+    return tickerPhrases[idx];
   });
   const [key, setKey] = useState(0); // Para reiniciar animación
   const prevPhrase = useRef(currentPhrase);
@@ -54,9 +50,9 @@ const NewsBar: React.FC = () => {
     setCurrentPhrase(nextPhrase);
     let idx;
     do {
-      idx = Math.floor(Math.random() * TICKER_PHRASES.length);
-    } while (TICKER_PHRASES[idx] === nextPhrase);
-    setNextPhrase(TICKER_PHRASES[idx]);
+      idx = Math.floor(Math.random() * tickerPhrases.length);
+    } while (tickerPhrases[idx] === nextPhrase);
+    setNextPhrase(tickerPhrases[idx]);
     setKey(k => k + 1); // Forzar reinicio de animación
   };
 

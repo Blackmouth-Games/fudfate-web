@@ -54,6 +54,26 @@ const GlitchLogo = ({ imageUrl, subtitle }: GlitchLogoProps) => {
                     {/* Telegram SVG icon */}
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.05 2.39 2.77 9.36c-1.31.48-1.3 1.15-.24 1.46l4.89 1.53 2.1 6.41c.28.82.52 1.13 1.06 1.13.54 0 .75-.25 1.04-.82l2.02-3.34 4.2 3.1c.77.42 1.32.2 1.51-.71l2.73-12.06c.28-1.19-.46-1.7-1.13-1.17z"/></svg>
                 </a>
+                {/* Pump Fun Button */}
+                <a
+                    href="https://pump.fun"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="FudFate on Pump Fun"
+                    className="p-2 rounded-full bg-black hover:bg-accent transition-colors border-2 border-black shadow-md"
+                >
+                    <img src="/img/logos/Pump_fun_logo.png" alt="Pump Fun" className="w-7 h-7" />
+                </a>
+                {/* DexScreener Button */}
+                <a
+                    href="https://dexscreener.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="FudFate on DexScreener"
+                    className="p-2 rounded-full bg-black hover:bg-accent transition-colors border-2 border-black shadow-md"
+                >
+                    <img src="/img/logos/dexscreener_logo.webp" alt="DexScreener" className="w-7 h-7" style={{ filter: 'invert(1) brightness(2)' }} />
+                </a>
             </div>
         </div>
     );

@@ -11,6 +11,7 @@ import { Dialog, DialogContent } from '@/components/ui/dialog';
 import type { WalletName } from '@solana/wallet-adapter-base';
 import { useTranslation } from 'react-i18next';
 import { connectSolflare } from '@/utils/wallet-connection-utils';
+import { PUMPFUN_URL, CA_TEXT } from "@/utils/pumpfun-config";
 
 interface WhitelistFormData {
   wallet: string;
@@ -419,63 +420,16 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
 
   return (
     <div className="flex flex-col items-center gap-4 w-full max-w-lg mx-auto">
+      <span className="text-2xl md:text-3xl font-pixel-2p mb-6 text-center">$SDFT OUT NOW!</span>
       <button
         id="join-whitelist-btn"
         className="font-pixel text-base px-6 py-3 rounded-md flex items-center justify-center gap-2 border-2 border-black shadow-md bg-[#FFE066] text-black hover:bg-[#00FFFF] hover:text-black transition-all duration-200 vibrate-btn"
-        onClick={() => setModalOpen(true)}
+        onClick={() => window.open(PUMPFUN_URL, '_blank')}
         disabled={isSubmitting}
       >
-        <span role="img" aria-label="rocket">🚀</span>
-        <span className="glitch">{isSubmitting ? t('whitelist.loading', 'Conectando...') : t('whitelist.joinWhitelist', 'Join Whitelist')}</span>
-        {isSubmitting && (
-          <svg className="animate-spin ml-2 h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-          </svg>
-        )}
+        <span className="glitch">BUY NOW</span>
       </button>
-      <span className="block text-xs text-gray-400 font-pixel text-center mt-1">CA: coming soon</span>
-      <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="fixed z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-8 shadow-lg flex flex-col items-center gap-6 w-[90vw] max-w-md">
-          <h2 className="font-pixel text-2xl mb-2 text-center">{t('connectWalletToJoin')}</h2>
-          <button
-            className="w-full flex items-center justify-center gap-2 rounded-md py-3 px-6 font-pixel text-lg transition-colors border-2 border-black"
-            style={{ backgroundColor: '#A69AE9', color: 'white' }}
-            onClick={() => handleConnect(PhantomWalletName)}
-            disabled={isSubmitting}
-          >
-            <img src="/img/images/Phantom-Icon_App_128x128.png" alt="Phantom" className="w-6 h-6" style={{ boxShadow: 'none' }} />
-            {isSubmitting ? t('whitelist.loading', 'Conectando...') : t('whitelist.connectPhantom', 'Connect Phantom')}
-            {isSubmitting && (
-              <svg className="animate-spin ml-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-              </svg>
-            )}
-          </button>
-          <span className="block text-xs text-gray-500 font-pixel text-center mb-2 italic">
-            {t('whitelist.phantomMobile')}
-          </span>
-          <button
-            className="w-full flex items-center justify-center gap-2 rounded-md py-3 px-6 font-pixel text-lg transition-colors border-2 border-black"
-            style={{ backgroundColor: '#FFEF4C', color: 'black' }}
-            onClick={() => handleConnect(SolflareWalletName)}
-            disabled={isSubmitting}
-          >
-            <img src="/img/images/Solflare_id5j73wBTF_0.png" alt="Solflare" className="w-6 h-6" style={{ boxShadow: 'none' }} />
-            {isSubmitting ? t('whitelist.loading', 'Conectando...') : t('whitelist.connectSolflare', 'Connect Solflare')}
-            {isSubmitting && (
-              <svg className="animate-spin ml-2 h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-              </svg>
-            )}
-          </button>
-          <span className="block text-xs text-gray-500 font-pixel text-center mb-2 italic">
-            {t('whitelist.solflareMobile')}
-          </span>
-        </DialogContent>
-      </Dialog>
+      <span className="block text-xs text-gray-400 font-pixel text-center mt-1">CA: {CA_TEXT}</span>
     </div>
   );
 };

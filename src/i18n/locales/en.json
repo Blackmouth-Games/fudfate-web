@@ -96,5 +96,11 @@
   "loading": "Connecting...",
   "joinWhitelist": "Join Whitelist",
   "connectPhantom": "Connect Phantom",
-  "connectSolflare": "Connect Solflare"
+  "connectSolflare": "Connect Solflare",
+  "ticker": [
+    "🚀 $SDFT just launched — Next stop: the moon! WAGMI! 🌕",
+    "🐳 Whales are splashing in $SDFT — Don't get left behind, anon! 📈",
+    "🔥 $SDFT is live! Bags packed, memes loaded, let's ride! 🧑‍🚀",
+    "⛽ $SDFT pumping hard — NGMI if you're not in! 🚀"
+  ]
 }
