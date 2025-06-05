@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/logo.css';
+import { LINKS } from "@/utils/links-config";
 
 interface GlitchLogoProps {
   imageUrl: string;
@@ -34,7 +35,7 @@ const GlitchLogo = ({ imageUrl, subtitle }: GlitchLogoProps) => {
             <div className="flex justify-center gap-4 mt-6">
                 {/* X (Twitter) Button */}
                 <a
-                    href="https://x.com/FDFT_tarot"
+                    href={LINKS.X}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="FudFate on X"
@@ -45,7 +46,7 @@ const GlitchLogo = ({ imageUrl, subtitle }: GlitchLogoProps) => {
                 </a>
                 {/* Telegram Button */}
                 <a
-                    href="https://t.me/fudfate"
+                    href={LINKS.TELEGRAM}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="FudFate on Telegram"
@@ -56,7 +57,7 @@ const GlitchLogo = ({ imageUrl, subtitle }: GlitchLogoProps) => {
                 </a>
                 {/* Pump Fun Button */}
                 <a
-                    href="https://pump.fun"
+                    href={LINKS.PUMPFUN}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="FudFate on Pump Fun"
@@ -66,7 +67,7 @@ const GlitchLogo = ({ imageUrl, subtitle }: GlitchLogoProps) => {
                 </a>
                 {/* DexScreener Button */}
                 <a
-                    href="https://dexscreener.com"
+                    href={LINKS.DEXSCREENER}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="FudFate on DexScreener"

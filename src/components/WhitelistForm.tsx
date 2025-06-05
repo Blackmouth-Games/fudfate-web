@@ -12,6 +12,7 @@ import type { WalletName } from '@solana/wallet-adapter-base';
 import { useTranslation } from 'react-i18next';
 import { connectSolflare } from '@/utils/wallet-connection-utils';
 import { PUMPFUN_URL, CA_TEXT } from "@/utils/pumpfun-config";
+import { LINKS } from "@/utils/links-config";
 
 interface WhitelistFormData {
   wallet: string;
@@ -424,7 +425,7 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
       <button
         id="join-whitelist-btn"
         className="font-pixel text-base px-6 py-3 rounded-md flex items-center justify-center gap-2 border-2 border-black shadow-md bg-[#FFE066] text-black hover:bg-[#00FFFF] hover:text-black transition-all duration-200 vibrate-btn"
-        onClick={() => window.open(PUMPFUN_URL, '_blank')}
+        onClick={() => window.open(LINKS.PUMPFUN, '_blank')}
         disabled={isSubmitting}
       >
         <span className="glitch">BUY NOW</span>
