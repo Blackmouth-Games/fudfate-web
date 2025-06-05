@@ -91,7 +91,7 @@ const NewsBar: React.FC = () => {
             href={LINKS.BUY_NOW_TICKER}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-4 px-6 py-2 rounded-lg font-pixel text-lg bg-[#FFE066] text-black border-2 border-[#ffb3ec] shadow-md hover:bg-[#00FFFF] hover:text-black transition-all duration-200 buy-now-ticker-btn"
+            className="ml-4 px-6 py-2 rounded-lg font-pixel text-lg bg-[#FFE066] text-black border-2 border-[#ffb3ec] shadow-md hover:bg-[#00FFFF] hover:text-black transition-all duration-200 buy-now-ticker-btn buy-now-ticker-desktop"
             style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '40px' }}
           >
             {t('buyNowTicker')}
@@ -171,6 +171,9 @@ const NewsBar: React.FC = () => {
             text-shadow: 0 0 6px #fff, 0 0 12px #ff00cc, 0 0 24px #00fff0;
             position: relative;
             z-index: 100;
+          }
+          .buy-now-ticker-desktop {
+            display: none !important;
           }
         }
         @keyframes ticker-move {

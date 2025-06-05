@@ -423,12 +423,31 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
     <div className="flex flex-col items-center gap-4 w-full max-w-lg mx-auto">
       <button
         id="join-whitelist-btn"
-        className="font-pixel text-base px-6 py-3 rounded-md flex items-center justify-center gap-2 border-2 border-black shadow-md bg-[#FFE066] text-black hover:bg-[#00FFFF] hover:text-black transition-all duration-200 vibrate-btn"
+        className="font-pixel text-base px-8 py-4 rounded-xl flex items-center justify-center gap-2 border-2 border-black shadow-lg bg-[#FFE066] text-black hover:bg-[#00FFFF] hover:text-black transition-all duration-200 vibrate-btn buy-now-main-btn"
+        style={{ fontSize: '1.5rem', fontWeight: 'bold', letterSpacing: '2px', boxShadow: '0 0 24px 8px #ffef4c, 0 0 48px 16px #ff00cc80' }}
         onClick={() => window.open(LINKS.PUMPFUN, '_blank')}
         disabled={isSubmitting}
       >
-        <span className="glitch">BUY NOW</span>
+        <span className="glitch">BUY NOW 🚀</span>
       </button>
+      <style>{`
+        .buy-now-main-btn {
+          animation: buy-now-main-glow 1.2s infinite alternate, buy-now-main-vibrate 0.18s infinite linear;
+          position: relative;
+        }
+        @keyframes buy-now-main-glow {
+          0% { box-shadow: 0 0 24px 8px #ffef4c, 0 0 48px 16px #ff00cc80; background: #FFE066; }
+          100% { box-shadow: 0 0 48px 16px #00fff0, 0 0 64px 24px #ff00cc; background: #FFEF4C; }
+        }
+        @keyframes buy-now-main-vibrate {
+          0% { transform: translateY(0px); }
+          20% { transform: translateY(-2px); }
+          40% { transform: translateY(2px); }
+          60% { transform: translateY(-2px); }
+          80% { transform: translateY(2px); }
+          100% { transform: translateY(0px); }
+        }
+      `}</style>
       <span className="block text-xs text-gray-400 font-pixel text-center mt-1">CA: {CA_TEXT}</span>
     </div>
   );

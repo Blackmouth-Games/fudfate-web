@@ -14,17 +14,17 @@ const GlitchLogo = ({ imageUrl, subtitle }: GlitchLogoProps) => {
                 <img 
                     src={imageUrl} 
                     alt="FUDfate Logo" 
-                    className="h-32 md:h-40 mx-auto mb-8 logo-glitch" 
+                    className="h-20 xs:h-24 sm:h-28 md:h-40 mx-auto mb-4 md:mb-8 logo-glitch" 
                 />
                 <img 
                     src={imageUrl} 
                     alt="FUDfate Logo Glitch 1" 
-                    className="absolute top-0 left-0 h-32 md:h-40 mx-auto mb-8 glitch-effect-1" 
+                    className="absolute top-0 left-0 h-20 xs:h-24 sm:h-28 md:h-40 mx-auto mb-4 md:mb-8 glitch-effect-1" 
                 />
                 <img 
                     src={imageUrl} 
                     alt="FUDfate Logo Glitch 2" 
-                    className="absolute top-0 left-0 h-32 md:h-40 mx-auto mb-8 glitch-effect-2" 
+                    className="absolute top-0 left-0 h-20 xs:h-24 sm:h-28 md:h-40 mx-auto mb-4 md:mb-8 glitch-effect-2" 
                 />
             </div>
             {subtitle && (

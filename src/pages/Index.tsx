@@ -92,12 +92,12 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white w-full max-w-full overflow-x-auto">
       <BackToTop />
       
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen relative flex items-center justify-center py-16 px-4 md:px-8 lg:px-16 overflow-hidden">
-        <div className="max-w-6xl w-full mx-auto text-center relative z-10">
+      <section id="hero" className="min-h-screen relative flex items-center justify-center py-10 px-2 sm:py-16 sm:px-4 md:px-8 lg:px-16 overflow-hidden w-full max-w-full">
+        <div className="max-w-6xl w-full mx-auto text-center relative z-10 px-0 sm:px-2">
           <AnimatedSection animation="fade-in" className="mb-6">
             <div className="flex justify-center mb-8">
               <GlitchLogo 
@@ -120,8 +120,8 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 px-4 md:px-8 lg:px-16 relative">
-        <div className="max-w-6xl mx-auto">
+      <section id="about" className="py-10 px-2 sm:py-16 sm:px-4 md:px-8 lg:px-16 relative w-full max-w-full">
+        <div className="max-w-6xl mx-auto w-full">
           <AnimatedSection animation="fade-in" className="mb-12 text-center">
             <GlitchText text={t('about.title')} goldEffect className="text-3xl md:text-4xl font-pixel-2p mb-6 text-black" />
             <p className="text-lg md:text-xl text-gray-700 font-pixel max-w-3xl mx-auto">
@@ -129,7 +129,7 @@ const Index = () => {
             </p>
           </AnimatedSection>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 w-full">
             <AnimatedSection animation="slide-in-up" delay={100} className="bg-white gold-frame p-6 rounded-lg text-center">
               <h3 className="text-xl font-pixel gold-text mb-3">{t('about.feature1')}</h3>
               <p className="text-gray-700">Unique pixel art style blending classic tarot and modern crypto aesthetics</p>
@@ -152,8 +152,8 @@ const Index = () => {
       <TarotCardSection />
 
       {/* CTA Section */}
-      <section className="py-16 px-4 md:px-8 lg:px-16" style={{ backgroundColor: '#FAD12B' }}>
-        <div className="max-w-6xl mx-auto text-center">
+      <section className="py-10 px-2 sm:py-16 sm:px-4 md:px-8 lg:px-16 w-full max-w-full" style={{ backgroundColor: '#FAD12B' }}>
+        <div className="max-w-6xl mx-auto text-center w-full">
           <AnimatedSection animation="fade-in" className="mb-6">
             <GlitchText text={t('cta.title')} goldEffect className="text-3xl md:text-4xl font-pixel-2p mb-4 text-black" />
             <p className="text-lg md:text-xl text-gray-700 font-pixel max-w-3xl mx-auto mb-8">
