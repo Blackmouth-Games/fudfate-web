@@ -421,7 +421,6 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
 
   return (
     <div className="flex flex-col items-center gap-4 w-full max-w-lg mx-auto">
-      <span className="text-2xl md:text-3xl font-pixel-2p mb-6 text-center">$SDFT OUT NOW!</span>
       <button
         id="join-whitelist-btn"
         className="font-pixel text-base px-6 py-3 rounded-md flex items-center justify-center gap-2 border-2 border-black shadow-md bg-[#FFE066] text-black hover:bg-[#00FFFF] hover:text-black transition-all duration-200 vibrate-btn"

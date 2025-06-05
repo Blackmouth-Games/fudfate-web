@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { LINKS } from "@/utils/links-config";
 
 // Fecha de prueba: 1 hora en el futuro desde ahora
 function getTargetDate() {
@@ -86,13 +87,15 @@ const NewsBar: React.FC = () => {
             </div>
           </div>
           {/* Countdown (desktop) */}
-          <div className="countdown-desktop">
-            {`${pad(timeLeft.days)}d ${pad(timeLeft.hours)}h ${pad(timeLeft.minutes)}m ${pad(timeLeft.seconds)}s`}
-          </div>
-        </div>
-        {/* Countdown (mobile, fuera del flex) */}
-        <div className="countdown-mobile-fixed">
-          {`${pad(timeLeft.days)}d ${pad(timeLeft.hours)}h ${pad(timeLeft.minutes)}m ${pad(timeLeft.seconds)}s`}
+          <a
+            href={LINKS.BUY_NOW_TICKER}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-4 px-6 py-2 rounded-lg font-pixel text-lg bg-[#FFE066] text-black border-2 border-[#ffb3ec] shadow-md hover:bg-[#00FFFF] hover:text-black transition-all duration-200 buy-now-ticker-btn"
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '40px' }}
+          >
+            {t('buyNowTicker')}
+          </a>
         </div>
       </div>
       {/* Animaciones CSS y responsive */}
@@ -173,6 +176,23 @@ const NewsBar: React.FC = () => {
         @keyframes ticker-move {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
+        }
+        .buy-now-ticker-btn {
+          box-shadow: 0 0 16px 4px #ffe066, 0 0 32px 8px #ff00cc80;
+          animation: buy-now-glow 1.2s infinite alternate, buy-now-vibrate 0.18s infinite linear;
+          position: relative;
+        }
+        @keyframes buy-now-glow {
+          0% { box-shadow: 0 0 16px 4px #ffe066, 0 0 32px 8px #ff00cc80; background: #FFE066; }
+          100% { box-shadow: 0 0 32px 8px #00fff0, 0 0 48px 16px #ff00cc; background: #FFEF4C; }
+        }
+        @keyframes buy-now-vibrate {
+          0% { transform: translateY(0px); }
+          20% { transform: translateY(-1px); }
+          40% { transform: translateY(1px); }
+          60% { transform: translateY(-1px); }
+          80% { transform: translateY(1px); }
+          100% { transform: translateY(0px); }
         }
       `}</style>
     </div>

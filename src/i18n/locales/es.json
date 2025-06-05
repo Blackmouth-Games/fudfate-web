@@ -66,7 +66,7 @@
   },
   "connectWalletToJoin": "Conecta tu wallet para unirte a la whitelist",
   "whitelist": {
-    "cta": "🚀 ANON, ¡NO TE PIERDAS LA LUNA! ¡ÚNETE A LA WHITELIST AHORA! 🌙",
+    "cta": " $SDFT YA DISPONIBLE!! 🚀 🌙",
     "solflareMobile": "Solflare solo puede conectarse desde el navegador dentro de la app.",
     "phantomMobile": "Phantom solo está disponible en navegadores de escritorio.",
     "onlySolflareTitle": "Solo Solflare",
@@ -102,5 +102,6 @@
     "🐳 Las ballenas ya están en $SDFT — ¡No te quedes fuera, anon! 📈",
     "🔥 $SDFT está en vivo. Bolsas listas, memes cargados, ¡a volar! 🧑‍🚀",
     "⛽ $SDFT pumpeando duro — NGMI si no entras. 🚀"
-  ]
+  ],
+  "buyNowTicker": "Comprar ahora"
 }
