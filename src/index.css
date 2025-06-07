@@ -231,6 +231,23 @@
     opacity: 0;
     pointer-events: none;
   }
+
+  .glow-launch-app-btn {
+    box-shadow: 0 0 16px 4px #ffe066, 0 0 32px 8px #ff00cc80;
+    animation: launch-app-glow 1.2s infinite alternate;
+    transition: box-shadow 0.3s, background 0.3s;
+  }
+
+  @keyframes launch-app-glow {
+    0% {
+      box-shadow: 0 0 16px 4px #ffe066, 0 0 32px 8px #ff00cc80;
+      background: #FFE066;
+    }
+    100% {
+      box-shadow: 0 0 32px 8px #00fff0, 0 0 48px 16px #ff00cc;
+      background: #FFEF4C;
+    }
+  }
 }
 
 @keyframes fadeIn {

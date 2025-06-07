@@ -73,9 +73,10 @@ const Navbar = () => {
                   to="https://app.fudfate.xyz/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-black font-bold px-4 py-2 rounded transition-colors pixel-btn pixel-btn-accent"
+                  className="text-black font-bold px-4 py-2 rounded transition-colors pixel-btn pixel-btn-accent glow-launch-app-btn floating flex items-center gap-2"
+                  style={{ fontSize: '1.1rem', letterSpacing: '1px', position: 'relative' }}
                 >
-                  {t('nav.app')}
+                  <span role="img" aria-label="cohete">🚀</span> {t('nav.app')}
                 </Link>
                 <LanguageSwitcher />
               </div>

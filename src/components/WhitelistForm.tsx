@@ -448,7 +448,14 @@ const WhitelistForm = ({ modalOpen, setModalOpen }: WhitelistFormProps) => {
           100% { transform: translateY(0px); }
         }
       `}</style>
-      <span className="block text-xs text-gray-400 font-pixel text-center mt-1">CA: {CA_TEXT}</span>
+      <span className="block text-base font-bold text-gray-800 font-pixel text-center mt-1" style={{ fontSize: '1.25rem', letterSpacing: '1px' }}>CA: {CA_TEXT}</span>
+      <button
+        className="glow-launch-app-btn floating pixel-btn pixel-btn-accent font-pixel font-bold px-3 py-1 rounded transition-colors flex items-center gap-2 mt-3"
+        style={{ fontSize: '0.95rem', letterSpacing: '0.5px', position: 'relative', minHeight: 0, minWidth: 0 }}
+        onClick={() => window.open('https://app.fudfate.xyz/', '_blank')}
+      >
+        <span role="img" aria-label="cohete">🚀</span> Launch App
+      </button>
     </div>
   );
 };
